@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mobileVerificationId"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/icons"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Large Text"
+        android:textColor="@color/accent"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/mobile_verification_layout"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_green_textview"
+        android:hint="code"
+        android:padding="5dp"
+        android:visibility="visible" >
+    </EditText>
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:text="SUBMIT"
+        android:textColor="@color/icons" />
+    
+    <Button
+        android:id="@+id/verif_btn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/dark_blue_rounded"
+        android:text="RESEND VERIFICATION CODE"
+        android:textColor="@color/icons" />
+
+</LinearLayout>

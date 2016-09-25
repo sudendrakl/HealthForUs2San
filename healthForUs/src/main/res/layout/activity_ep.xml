@@ -1,0 +1,1233 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/icons"
+    android:fillViewport="true"
+    android:paddingTop="20dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/grey_round_cornner"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/userHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Select Register Type:"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/userHeader"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/userHeader"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/doctor_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:checked="true"
+                    android:text="DOCTOR" />
+
+                <RadioButton
+                    android:id="@+id/hospital_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOSPITAL" />
+            </RadioGroup>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/doctor_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <EditText
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_doctor_name"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Doctor Name"
+                android:inputType="textPersonName"
+                android:padding="5dp" >
+
+                <requestFocus />
+            </EditText>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/specialization" />
+
+                <Spinner
+                    android:id="@+id/category"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:ems="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:gravity="center_vertical"
+                android:padding="5dp" >
+
+                <!--<ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/specialization" />-->
+
+                <Spinner
+                    android:id="@+id/specilization"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:visibility="gone"
+                    android:ems="10" />
+                <TextView
+                    android:id="@+id/tv_specilization"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Select Specialization"
+                    android:drawableLeft="@drawable/ic_specialization"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:padding="5dp"
+                    android:ems="10"/>
+            </LinearLayout>
+            <EditText
+                android:id="@+id/designation"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_qualification"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Qualification"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+            <EditText
+                android:id="@+id/doc_clinic"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Clinic Name"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+            <TextView
+                android:id="@+id/locationDoc"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:text="Location"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/experience"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_experience"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:maxLength="2"
+                android:hint="Experience(Years)"
+                android:inputType="number"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/cosultation_fee"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_expensive"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Consultation Fee"
+                android:inputType="number"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_mobile_number"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Mobile Number"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/emergency_number"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_emergency_call"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:visibility="gone"
+                android:hint="Emergency Number"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="5dp" />
+
+            <!--<EditText
+                android:id="@+id/fax"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/mobile_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Fax"
+                android:inputType="number"
+                android:padding="5dp" />-->
+
+            <EditText
+                android:id="@+id/email_id"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Email ID"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/website"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_website"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Website"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/hostpital_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Address"
+                android:singleLine="false"
+                android:maxLines="10"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/address1"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_address"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Address 2"
+                android:singleLine="false"
+                android:maxLines="10"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+            <EditText
+                android:id="@+id/hospital_affiliations"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_hosiptal_affilations"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Hospital Affiliations"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+            <EditText
+                android:id="@+id/associated_hospital"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_associated"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Associated hospital"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/leadership_roles"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_leadership"
+                android:ems="10"
+                android:hint="Leadership Roles"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <!--<EditText
+                android:id="@+id/fellowship"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_fellowship"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Fellowship"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />-->
+
+            <EditText
+                android:id="@+id/certifications"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_certification"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Certifications"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:padding="5dp"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/browse_txt_doc"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_weight="1.5"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:ems="10"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:hint="Upload Certificate"-->
+            <!--android:layout_marginRight="2.5dp"-->
+            <!--/>-->
+
+            <!--<Button-->
+            <!--android:id="@+id/browse_btn_doc"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_weight="0.5"-->
+            <!--android:layout_marginLeft="2.5dp"-->
+            <!--android:background="@drawable/dark_blue_rounded"-->
+            <!--android:text="Browse"-->
+            <!--android:textColor="@color/icons" />-->
+            <!--</LinearLayout>-->
+
+            <EditText
+                android:id="@+id/doctor_description"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_description"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Description"
+                android:maxLength="150"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/received_awards"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_reciave_award"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Received Awards"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/cb_payCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Paycard" />
+
+                <CheckBox
+                    android:id="@+id/cb_Emergency"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Emergency" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/cb_homevisit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Home visit" />
+
+                <CheckBox
+                    android:id="@+id/cb_healthtip"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Healthtip" />
+            </LinearLayout>
+
+
+
+            <!--<EditText
+                android:id="@+id/pay_card"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/specialization"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Pay Cards"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/home_visit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/specialization"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Home Visit"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/health_tip"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/specialization"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Health tip"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+-->
+            <!--<EditText
+                android:id="@+id/video_url"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_video"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Video"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />-->
+            <EditText
+                android:id="@+id/linkedin_url"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_linkedin"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="LinkedIn"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+            <EditText
+                android:id="@+id/fb_url"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_facebook"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Facebook"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hospital_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <EditText
+                android:id="@+id/hospital_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_doctor_name"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Hospital Name"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/hospital_category"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_specialization"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Category"
+                android:visibility="gone"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:gravity="center_vertical"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_specialization" />
+
+                <Spinner
+                    android:id="@+id/hospital_specilization"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:ems="10"
+                    android:visibility="gone"/>
+                <TextView
+                    android:id="@+id/tv_specilizationhos"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Select Specialization"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:padding="5dp"
+                    android:ems="10"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/location_hosNew"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:text="Location"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:padding="5dp" />
+            <!--<EditText-->
+            <!--android:id="@+id/hospital_cosultation_fee"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:drawableLeft="@drawable/ic_expensive"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:ems="10"-->
+            <!--visi-->
+            <!--android:hint="Consultation Fee"-->
+            <!--android:inputType="number"-->
+            <!--android:padding="5dp" />-->
+
+            <EditText
+                android:id="@+id/hospital_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_mobile_number"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Phone Number"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/hospital_immg_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_emergency_call"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Immergency Contact"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="5dp" />
+
+            <!--<EditText-->
+            <!--android:id="@+id/hospital_fax"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:drawableLeft="@drawable/mobile_icon"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:ems="10"-->
+            <!--android:hint="Fax"-->
+            <!--android:inputType="number"-->
+            <!--android:padding="5dp" />-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:gravity="center"-->
+            <!--android:padding="5dp"-->
+            <!---->
+            <!--android:orientation="horizontal">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/browse_txt_hos"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_weight="1.5"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:ems="10"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:hint="Upload Certificate"-->
+            <!--android:layout_marginRight="2.5dp"-->
+            <!--/>-->
+
+            <!--<Button-->
+            <!--android:id="@+id/browse_btn_hos"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_weight="0.5"-->
+            <!--android:layout_marginLeft="2.5dp"-->
+            <!--android:background="@drawable/dark_blue_rounded"-->
+            <!--android:text="Browse"-->
+            <!--android:textColor="@color/icons" />-->
+            <!--</LinearLayout>-->
+
+            <EditText
+                android:id="@+id/hospital_description"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_description"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Description"
+                android:maxLength="150"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/hospital_email_id"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Email ID"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/hospital_website"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_website"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Website"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/hospital_address"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_address"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Address"
+                android:padding="5dp" />
+            <EditText
+                android:id="@+id/hospital_address1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/hostpital_icon"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Address 2"
+                android:visibility="gone"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+            <!--<EditText-->
+            <!--android:id="@+id/hospital_certifications"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:drawableLeft="@drawable/ic_certification"-->
+            <!--android:ems="10"-->
+            <!--android:hint="Certifications"-->
+            <!--android:inputType="textEmailAddress"-->
+            <!--android:padding="5dp" />-->
+
+            <!--<EditText-->
+            <!--android:id="@+id/hos_certification_no"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:drawableLeft="@drawable/ic_certificate"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:ems="10"-->
+            <!--android:hint="Certifications Number"-->
+            <!--android:inputType="textEmailAddress"-->
+            <!--android:padding="5dp" />-->
+
+            <EditText
+                android:id="@+id/hospital_received_awards"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_reciave_award"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Received Awards"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+
+
+            <!--<EditText-->
+            <!--android:id="@+id/hospital_ownership"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:ems="10"-->
+            <!--android:hint="Ownership"-->
+            <!--android:inputType="textEmailAddress"-->
+            <!--android:padding="5dp" />-->
+
+            <EditText
+                android:id="@+id/hospital_accredity"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Accredited By "
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <EditText
+                android:id="@+id/hospital_our_doctors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_our_doctor"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Our Doctors "
+                android:padding="5dp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:background="@drawable/rounded_green_textview">
+                <TextView
+                    android:id="@+id/tv_timeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select timings"
+                    android:textSize="16sp"
+                    android:textColor="@color/mdtp_transparent_black"/>
+                <TextView
+                    android:id="@+id/tv_fromTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_green_textview"
+                    android:layout_margin="10dp"
+                    android:text="From Time"
+                    android:layout_below="@id/tv_timeTxt"/>
+                <TextView
+                    android:id="@+id/tv_toTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_green_textview"
+                    android:layout_margin="10dp"
+                    android:text="To Time"
+                    android:layout_below="@id/tv_timeTxt"
+                    android:layout_toRightOf="@+id/tv_fromTime"/>
+            </RelativeLayout>
+            <EditText
+                android:id="@+id/hospital_opd_timing"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green_textview"
+                android:drawableLeft="@drawable/ic_time"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="OPD Timings"
+                android:inputType="textEmailAddress"
+                android:padding="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/lab"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="LAB" />
+
+                <CheckBox
+                    android:id="@+id/multiple_branches"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Multiple Branches" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/xray"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Xray" />
+
+                <CheckBox
+                    android:id="@+id/home_medicine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="In House Medicine Store" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/blood_bank"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Blood Bank" />
+
+                <CheckBox
+                    android:id="@+id/immergency"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Immergency" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/opd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="OPD" />
+
+                <CheckBox
+                    android:id="@+id/room_service"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Room Services" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="TV" />
+
+                <CheckBox
+                    android:id="@+id/hour_open"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="24Hour Open" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/wifi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Wifi" />
+
+                <CheckBox
+                    android:id="@+id/ac_room"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="AC Rooms" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/health_tips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Health Tips" />
+
+                <CheckBox
+                    android:id="@+id/health_blog"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Insurance" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                android:weightSum="2" >
+
+                <CheckBox
+                    android:id="@+id/ambulace_contact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="Ambulance" />
+
+                <CheckBox
+                    android:id="@+id/number_of_bead"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="CGHS Linked" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--<EditText-->
+            <!--android:id="@+id/password"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:drawableLeft="@drawable/key"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:ems="10"-->
+            <!--android:hint="Password"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:padding="5dp" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/confirmpassword"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:drawableLeft="@drawable/key"-->
+            <!--android:drawablePadding="5dp"-->
+            <!--android:ems="10"-->
+            <!--android:hint="Confirm Password"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:padding="5dp" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/browse_txt_doc"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1.5"
+                android:background="@drawable/rounded_green_textview"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="Upload Certificate"
+                android:layout_marginRight="2.5dp"
+                />
+
+            <Button
+                android:id="@+id/browse_btn_doc"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="2.5dp"
+                android:background="@drawable/dark_blue_rounded"
+                android:text="Browse"
+                android:textColor="@color/icons" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_01"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/plus_bg"/>
+            <ImageView
+                android:id="@+id/img_02"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/plus_bg"/>
+            <ImageView
+                android:id="@+id/img_03"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/plus_bg"/>
+            <ImageView
+                android:id="@+id/img_04"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/plus_bg"/>
+            <ImageView
+                android:id="@+id/img_05"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/plus_bg"/>
+            <!--<TextView-->
+            <!--android:id="@+id/browse_txt"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_weight="1.5"-->
+            <!--android:background="@drawable/rounded_green_textview"-->
+            <!--android:ems="10"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:hint="Select Image"-->
+            <!--android:layout_marginRight="2.5dp"-->
+            <!--/>-->
+
+            <!--<Button-->
+            <!--android:id="@+id/browse_btn"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_weight="0.5"-->
+            <!--android:layout_marginLeft="2.5dp"-->
+            <!--android:background="@drawable/dark_blue_rounded"-->
+            <!--android:text="Browse"-->
+            <!--android:textColor="@color/icons" />-->
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/rounded_button"
+            android:text="Submit"
+            android:textColor="@color/icons"
+            android:layout_marginBottom="50dp"/>
+    </LinearLayout>
+
+</ScrollView>

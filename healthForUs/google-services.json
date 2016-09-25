@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "176564602454",
+    "firebase_url": "https://biz-apps-healthforus-doc.firebaseio.com",
+    "project_id": "biz-apps-healthforus-doc",
+    "storage_bucket": "biz-apps-healthforus-doc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176564602454:android:7ccdd20accbb858a",
+        "android_client_info": {
+          "package_name": "bizapps.com.healthforusDoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176564602454-0lhiv9o5mv762un8nvjpbs1fkughjcfj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bizapps.com.healthforusDoc",
+            "certificate_hash": "0E1D179AECDD120E9BEA4A58D60D838B2D71CE23"
+          }
+        },
+        {
+          "client_id": "176564602454-hitrg1rienpq2ejj2bbhposq8kt3le0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bizapps.com.healthforusDoc",
+            "certificate_hash": "81BD34743781D57A37A8333066437ED38D165FAD"
+          }
+        },
+        {
+          "client_id": "176564602454-gqhdtfb44agi257brq1u5emt8npmnf6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAvPrFTTRuj2cCjCXAhKdLEWJGG4l9RS0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176564602454-gqhdtfb44agi257brq1u5emt8npmnf6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

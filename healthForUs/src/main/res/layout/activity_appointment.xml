@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/icons"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/container_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize" >
+
+        <ImageView
+            android:id="@+id/backarrow_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/abc_ic_ab_back_material" />
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:text="Appointments" />
+
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/left_menu" />
+
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/appointment_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="1" >
+    </GridView>
+
+    <TextView
+        android:id="@+id/no_appointments"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="No Appointments yet"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:visibility="gone" />
+
+</LinearLayout>

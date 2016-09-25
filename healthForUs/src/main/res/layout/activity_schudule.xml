@@ -1,0 +1,310 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/icons">
+
+    <RelativeLayout
+        android:id="@+id/container_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize" >
+
+        <ImageView
+            android:id="@+id/backarrow_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/abc_ic_ab_back_material" />
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Schedule Timings"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/left_menu" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/select_week_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/container_toolbar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Select Day:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TableRow
+        android:id="@+id/week_row"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/select_week_view"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:background="@drawable/grey_round_cornner"
+        android:gravity="center_vertical"
+        android:weightSum="7" >
+
+        <TextView
+            android:id="@+id/sunday_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="S"
+            android:textColor="@color/grey_color"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="0.7dp"
+            android:layout_height="30dp"
+            android:background="@color/grey_color" />
+
+        <TextView
+            android:id="@+id/monday_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="M"
+            android:textColor="@color/grey_color"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0.7dp"
+            android:layout_height="30dp"
+            android:background="@color/grey_color" />
+
+        <TextView
+            android:id="@+id/tuesday_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/grey_color"
+            android:text="T"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="0.7dp"
+            android:layout_height="30dp"
+            android:background="@color/grey_color" />
+
+        <TextView
+            android:id="@+id/wednesday_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="W"
+            android:textColor="@color/grey_color"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="0.7dp"
+            android:layout_height="30dp"
+            android:background="@color/grey_color" />
+
+        <TextView
+            android:id="@+id/thursday_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="T"
+            android:textColor="@color/grey_color"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/view5"
+            android:layout_width="0.7dp"
+            android:layout_height="30dp"
+            android:background="@color/grey_color" />
+
+        <TextView
+            android:id="@+id/friday_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="F"
+            android:textColor="@color/grey_color"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="0.7dp"
+            android:layout_height="30dp"
+            android:background="@color/grey_color" />
+
+        <TextView
+            android:id="@+id/saturday_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="S"
+            android:textColor="@color/grey_color"
+            android:textSize="20sp" />
+    </TableRow>
+
+    <TextView
+        android:id="@+id/select_time_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/week_row"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Select Time:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TableRow
+        android:id="@+id/timerow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/select_time_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/select_from_time_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/week_row"
+            android:layout_weight="1"
+            android:text="Start Time:"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/select_to_time_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/week_row"
+            android:layout_weight="1"
+            android:text="End Time:"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/timeviewsrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timerow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center"
+        android:weightSum="2" >
+
+        <TextView
+            android:id="@+id/select_from_time"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/week_row"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/grey_round_cornner"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Start Time"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/select_to_time"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/week_row"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/grey_round_cornner"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="End Time"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/add_schedule_btn"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button"
+        android:text="ADD SCHEDULE"
+        android:textColor="@color/icons" />
+
+    <Button
+        android:id="@+id/add_timings"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/timeviewsrow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/dark_blue_rounded"
+        android:text="ADD"
+        android:textColor="@color/icons" />
+
+    <TextView
+        android:id="@+id/timings_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/week_row"
+        android:layout_below="@+id/add_timings"
+        android:text="Timings:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/timings_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/week_row"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/timings_text_view"
+        android:text=""
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Medico4Us"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textColor="@color/health_color"
+        android:layout_margin="10dp"/>
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/medico_logo" />
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_green_textview"
+        android:ems="10"
+        android:drawablePadding="5dp"
+        android:hint="Mobile number"
+        android:drawableLeft="@drawable/ic_doctor_name"
+        android:inputType="number"
+        android:padding="5dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_green_textview"
+        android:drawablePadding="5dp"
+        android:hint="Password"
+        android:drawableLeft="@drawable/ic_password"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:padding="5dp" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_button"
+        android:text="@string/login"
+        android:textColor="@color/icons" />
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="#FD321C"
+        android:text="@string/forgot_password"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/dark_blue_rounded"
+        android:text="@string/register"
+        android:textColor="@color/icons" />
+
+</LinearLayout>
