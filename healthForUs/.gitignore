@@ -28,3 +28,4 @@ proguard/
 # iml file
 *.iml
 
+release-keystore.jks
