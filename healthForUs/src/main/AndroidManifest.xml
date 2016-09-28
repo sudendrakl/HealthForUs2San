@@ -1,113 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bizapps.com.healthforusDoc">
+    package="bizapps.com.healthforusDoc"
+    >
 
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <application
-        android:name=".BZAppApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_new_01"
+  <application
+      android:name=".BZAppApplication"
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher_new_01"
+      android:label="@string/app_name"
+      android:theme="@style/AppMaterialTheme"
+      >
+    <activity
+        android:name=".activity.SplashScreenActivity"
         android:label="@string/app_name"
-        android:theme="@style/AppMaterialTheme">
-        <activity
-            android:name=".activity.SplashScreenActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        android:screenOrientation="portrait"
+        >
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
 
-        <service
-            android:name=".utills.FetchAddressIntentService"
-            android:exported="false" />
+    <service
+        android:name=".utills.FetchAddressIntentService"
+        android:exported="false"
+        />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDiygI000yVjeEDywnq8wTWxKx5ARkAscs" />
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyDiygI000yVjeEDywnq8wTWxKx5ARkAscs"
+        />
 
-        <activity
-            android:name=".activity.PlaceActivity"
-            android:label="Location"
-            android:theme="@style/AppThemeNew" />
-        <activity
-            android:name=".activity.MobileVerificationActivity"
-            android:label="@string/title_activity_mobile_verification"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.RegisterActivity"
-            android:label="@string/title_activity_register"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity
-            android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_login"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.ForgotPasswordActivity"
-            android:label="@string/title_activity_forgot_password"
-            android:screenOrientation="portrait"/>
+    <activity
+        android:name=".activity.PlaceActivity"
+        android:label="Location"
+        android:theme="@style/AppThemeNew"
+        />
+    <activity
+        android:name=".activity.MobileVerificationActivity"
+        android:label="@string/title_activity_mobile_verification"
+        android:screenOrientation="portrait"
+        />
+    <activity
+        android:name=".activity.RegisterActivity"
+        android:label="@string/title_activity_register"
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="adjustPan"
+        />
+    <activity
+        android:name=".activity.LoginActivity"
+        android:label="@string/title_activity_login"
+        android:screenOrientation="portrait"
+        />
+    <activity
+        android:name=".activity.ForgotPasswordActivity"
+        android:label="@string/title_activity_forgot_password"
+        android:screenOrientation="portrait"
+        />
 
-        <receiver
-            android:name=".utills.ConnectivityReceiver"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
+    <receiver
+        android:name=".utills.ConnectivityReceiver"
+        android:enabled="true"
+        >
+      <intent-filter>
+        <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+      </intent-filter>
+    </receiver>
 
-        <activity
-            android:name=".activity.DashboardActivity"
-            android:label="@string/title_activity_dashboard"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.AppointmentActivity"
-            android:label="@string/title_activity_appointment"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.BlogActivity"
-            android:label="@string/title_activity_blog"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.SchuduleActivity"
-            android:label="@string/title_activity_schudule"
-            android:screenOrientation="portrait"
-            />
-        <activity
-            android:name=".ScheduleVactionActivity"
-            android:label="@string/title_activity_schedule_vaction"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.EPActivity"/>
+    <activity
+        android:name=".activity.DashboardActivity"
+        android:label="@string/title_activity_dashboard"
+        android:screenOrientation="portrait"
+        />
+    <activity
+        android:name=".activity.AppointmentActivity"
+        android:label="@string/title_activity_appointment"
+        android:screenOrientation="portrait"
+        />
+    <activity
+        android:name=".activity.BlogActivity"
+        android:label="@string/title_activity_blog"
+        android:screenOrientation="portrait"
+        />
+    <activity
+        android:name=".activity.SchuduleActivity"
+        android:label="@string/title_activity_schudule"
+        android:screenOrientation="portrait"
+        />
+    <activity
+        android:name=".ScheduleVactionActivity"
+        android:label="@string/title_activity_schedule_vaction"
+        android:screenOrientation="portrait"
+        />
+    <activity android:name=".activity.EPActivity"/>
 
-        <service
-            android:name=".services.FirebaseInstanceIDListenerService"
-            android:permission=""
-            >
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
+    <service
+        android:name=".services.FirebaseInstanceIDListenerService"
+        android:permission=""
+        >
+      <intent-filter>
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+      </intent-filter>
+    </service>
+    <service
+        android:name=".services.OneSignalNotificationExtenderService"
+        android:exported="false"
+        >
+      <intent-filter>
+        <action android:name="com.onesignal.NotificationExtender"/>
+      </intent-filter>
+    </service>
+    <service android:name=".services.RegistrationService"/>
 
-        <service
-            android:name=".services.OneSignalNotificationExtenderService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.onesignal.NotificationExtender" />
-            </intent-filter>
-        </service>
-
-        <service android:name=".services.RegistrationService"/>
-    </application>
+    <activity
+        android:name=".activity.WebActivity"
+        android:label="@string/title_activity_web"
+        android:theme="@style/AppMaterialTheme"
+        android:launchMode="singleTask"
+        >
+    </activity>
+  </application>
 
 </manifest>

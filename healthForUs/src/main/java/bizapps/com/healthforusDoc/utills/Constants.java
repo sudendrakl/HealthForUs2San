@@ -10,6 +10,7 @@ public interface Constants {
     String URL = "url";
     String AUTH_TOKEN = "auth_token";
     String GCM_KEY = "gck_key";
+    String TITLE = "title";
   }
 
   interface URLS {

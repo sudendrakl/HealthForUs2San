@@ -1,6 +1,10 @@
 package bizapps.com.healthforusDoc.helper;
 
+import android.content.Intent;
 import android.util.Log;
+import bizapps.com.healthforusDoc.BZAppApplication;
+import bizapps.com.healthforusDoc.activity.WebActivity;
+import bizapps.com.healthforusDoc.utills.Constants;
 import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
@@ -17,12 +21,20 @@ public class OneSignalNotificationOpenedHandler implements OneSignal.Notificatio
   @Override public void notificationOpened(OSNotificationOpenResult result) {
     OSNotificationAction.ActionType actionType = result.action.type;
     JSONObject data = result.notification.payload.additionalData;
-    String customKey;
+    String url;
 
     Log.i(TAG, "notificationOpened() payload = " + (data != null ? data.toString() : null));
     if (data != null) {
-      customKey = data.optString("customkey", null);
-      if (customKey != null) Log.i("OneSignalExample", "customkey set with value: " + customKey);
+      url = data.optString("url", null);//TODO: launch url... additional payload {'key':'url'}
+      if (url != null) {
+        Log.i("OneSignalExample", "customkey set with value: " + url);
+        Intent intent = new Intent(BZAppApplication.getInstance(), WebActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        intent.putExtra(Constants.IntentExtra.URL, url);
+        intent.putExtra(Constants.IntentExtra.TITLE, data.optString("title"));
+        BZAppApplication.getInstance().startActivity(intent);
+      }
     }
 
     if (actionType == OSNotificationAction.ActionType.ActionTaken) {
