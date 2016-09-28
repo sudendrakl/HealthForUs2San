@@ -19,6 +19,9 @@
       android:label="@string/app_name"
       android:theme="@style/AppMaterialTheme"
       >
+    <!--to disable start of default launcher activity, handle click in NotificationOpened-->
+    <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
+
     <activity
         android:name=".activity.SplashScreenActivity"
         android:label="@string/app_name"
