@@ -1,6 +1,7 @@
 package bizapps.com.healthforusDoc.utills;
 
 public class URLConstants {
+  public static final String DR_BASE_URL = "http://medico4us.in/";
 	private static final String baseUrl = "http://doctorapp.rakyow.com/userapp/";
 	private static final String patient_baseUrl = baseUrl + "patientapi/";
 	private static final String doctor_base_url = baseUrl + "api/";
@@ -30,13 +31,13 @@ public class URLConstants {
 	public static final String getDoctorChangePasswordUrl = doctor_base_url + change_password_url;
 	public static final String getDoctorAddUserUrl = doctor_base_url + add_user_url;
 	public static final String getDoctorUpdateProfileUrl = doctor_base_url + update_profile;
-	public static final String getDoctorAppointmentsUrl = baseUrl + appointment;  
+	public static final String getDoctorAppointmentsUrl = baseUrl + appointment;
 	public static final String getDoctorAppointmentAcceptUrl = baseUrl + appointment_accept;
 	public static final String getDoctorScheduleAppointmentUrl = baseUrl + schedule_appointments;
 	public static final String getDoctorAppointmentRejectUrl = baseUrl + appointment_reject;
 	public static final String getDoctorCancelScheduleAppointmentUrl = baseUrl + cancel_scheduled_appointments;
 	public static final String getDoctorBlogListUrl = baseUrl + blog_list;
-	
+
 	public static final String getPatientLoginUrl = patient_baseUrl + login_url;
 	public static final String getPatientmobileverficationUrl = patient_baseUrl + mobile_verification_url;
 	public static final String getPatientregisterUrl = patient_baseUrl + register_url;

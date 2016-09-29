@@ -1,25 +1,5 @@
 package bizapps.com.healthforusDoc.activity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -41,9 +21,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 import bizapps.com.healthforusDoc.BZAppApplication;
 import bizapps.com.healthforusDoc.R;
-import bizapps.com.healthforusDoc.ScheduleVactionActivity;
 import bizapps.com.healthforusDoc.model.Appiontments;
-import bizapps.com.healthforusDoc.utills.URLConstants;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import static bizapps.com.healthforusDoc.utills.URLConstants.DR_BASE_URL;
 
 public class AppointmentActivity extends BaseActivity implements OnClickListener, OnMenuItemClickListener {
 
@@ -224,11 +221,11 @@ public class AppointmentActivity extends BaseActivity implements OnClickListener
 			final String msg, url;
 			if (isAccepted) {
 				msg = "Appointment is sucessfully added";
-				url = "http://sundareshln.com/test/appointment_accept.php";
+				url = DR_BASE_URL + "appointment_accept.php";
 //						URLConstants.getDoctorAppointmentAcceptUrl;
 			} else {
 				msg = "Appointment is canceled";
-				url = "http://sundareshln.com/test/appointment_reject.php";
+				url = DR_BASE_URL + "appointment_reject.php";
 //						URLConstants.getDoctorAppointmentRejectUrl;
 			}
 
@@ -238,7 +235,7 @@ public class AppointmentActivity extends BaseActivity implements OnClickListener
 						@Override
 						public void onResponse(JSONObject response) {
 							try{
-								Log.e("AppointmentAcceptReject",""+response);
+								Log.i("AppointmentAcceptReject",""+response);
 								if(response != null){
 									if(response.getString("status").equalsIgnoreCase("fail"))
 										Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT).show();

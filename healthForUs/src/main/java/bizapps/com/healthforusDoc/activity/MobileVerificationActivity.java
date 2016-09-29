@@ -92,7 +92,7 @@ public class MobileVerificationActivity extends BaseActivity {
 
 		JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST,
 //				URLConstants.getDoctormobileverficationUrl,
-				"http://sundareshln.com/test/passcodeVerification.php",
+				URLConstants.DR_BASE_URL + "passcodeVerification.php",
 				new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {

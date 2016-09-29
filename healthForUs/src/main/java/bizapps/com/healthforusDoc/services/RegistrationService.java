@@ -41,6 +41,7 @@ public class RegistrationService extends IntentService {
 
     try {
       String authToken = fetchTokenAndRegister();
+      System.out.println("shit --- authToken: " + authToken);
       updateTokenToServer(authToken, gcmKey);
 
       //TODO: update UI to continue...throw a broadcast msg to MainActivity
@@ -85,6 +86,8 @@ public class RegistrationService extends IntentService {
     Headers headers  = Headers.of(headerMap);
 
     GcmUpdateResponseDto response = sendRequest(url, headers, params, GcmUpdateResponseDto.class);
+
+    System.out.println("shit updateTokenToServer()...response" + response.isStatus() + " ===== " + response.toString());
 
     if(response.isStatus()) {
       //TODO: success

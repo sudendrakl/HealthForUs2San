@@ -226,7 +226,7 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
 
         CustomMultipartRequest multipartRequest = new CustomMultipartRequest(
 //                "http://doctorapp.rakyow.com/userapp/api/doctor_edit",
-                "http://sundareshln.com/test/updateDoctor.php",
+            URLConstants.DR_BASE_URL + "updateDoctor.php",
                 jsonParams,
                 new Response.Listener<String>() {
                     @Override
@@ -291,7 +291,7 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
 
         JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST,
 //                "http://doctorapp.rakyow.com/userapp/api/get_doctor_edit",
-                "http://sundareshln.com/test/doctorDetails.php",
+            URLConstants.DR_BASE_URL + "doctorDetails.php",
                 new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

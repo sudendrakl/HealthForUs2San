@@ -252,7 +252,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 
 		JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.GET,
 //				URLConstants.getDoctorSpecializationsUrl,
-				"http://sundareshln.com/test/specialisation.php",
+				URLConstants.DR_BASE_URL + "specialisation.php",
 				new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {
@@ -495,7 +495,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			setHospitalMap(jsonParams);
 
 		CustomMultipartRequest multipartRequest = new CustomMultipartRequest(
-				(isRegister) ? "http://sundareshln.com/test/doctor.php" : URLConstants.getDoctorUpdateProfileUrl, jsonParams,
+				(isRegister) ? URLConstants.DR_BASE_URL + "doctor.php" : URLConstants.getDoctorUpdateProfileUrl, jsonParams,
 				new Response.Listener<String>() {
 					@Override
 					public void onResponse(String result) {

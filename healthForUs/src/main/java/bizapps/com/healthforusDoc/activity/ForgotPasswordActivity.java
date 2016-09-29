@@ -97,7 +97,7 @@ public class ForgotPasswordActivity extends BaseActivity implements Connectivity
 
 		JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST,
 //				URLConstants.getDoctorForgotPasswordUrl,
-				"http://sundareshln.com/test/doctorUpdatePassword.php",
+				URLConstants.DR_BASE_URL + "doctorUpdatePassword.php",
 				new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {
@@ -150,7 +150,7 @@ public class ForgotPasswordActivity extends BaseActivity implements Connectivity
 
 		JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST,
 //				URLConstants.getDoctorForgotPasswordUrl,
-				"http://sundareshln.com/test/doctorForgotPassword.php",
+				URLConstants.DR_BASE_URL + "doctorForgotPassword.php",
 				new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {

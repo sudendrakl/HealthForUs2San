@@ -409,7 +409,7 @@ public class SchuduleActivity extends BaseActivity
 
 			JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST,
 //					URLConstants.getDoctorScheduleAppointmentUrl,
-					"http://sundareshln.com/test/appointment_timings.php",
+					URLConstants.DR_BASE_URL + "appointment_timings.php",
 					new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
 						@Override
 						public void onResponse(JSONObject response) {

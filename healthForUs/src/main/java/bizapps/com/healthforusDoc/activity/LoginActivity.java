@@ -84,7 +84,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,  Con
 
 		JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST,
 //				URLConstants.getDoctorLoginUrl,
-				"http://sundareshln.com/test/login.php",
+				URLConstants.DR_BASE_URL + "login.php",
 				new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {

@@ -49,7 +49,7 @@ android {
 
     buildTypes {
         release {
-            debuggable false
+            debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
@@ -63,7 +63,6 @@ android {
             signingConfig signingConfigs.debug
             versionNameSuffix "-debug"
             buildConfigField "String", "BASE_URL", '"http://139.59.5.88:6578/"' //TODO for debug
-
         }
     }
 }

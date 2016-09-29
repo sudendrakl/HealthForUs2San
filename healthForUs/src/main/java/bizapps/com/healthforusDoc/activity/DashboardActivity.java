@@ -417,18 +417,19 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
 		jsonParams.put("userid", getAppSharedPreference().getUserGuid());
 		JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST,
 //				URLConstants.getDoctorAppointmentsUrl,
-				"http://sundareshln.com/test/doctorSchedule.php",
+				URLConstants.DR_BASE_URL + "doctorSchedule.php",
 				new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
 					@Override
 					public void onResponse(JSONObject response) {
 						try{
-							Log.e("AppointmentListResponse",""+response);
+							Log.isLoggable("AppointmentListResponse", Log.VERBOSE);
+
+							Log.i("AppointmentListResponse",""+response);
 							if(response != null){
 								if(response.getString("status").equalsIgnoreCase("fail"))
 									Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
 								else {
-									Log.e("Dashboard Response",""+response.toString());
-									Log.i("APPOINTMENTS", response.toString());
+									Log.i("AppointmentListResponse", response.toString());
 									JSONArray jArray = response.getJSONArray("data");
 									GsonBuilder gsonBuilder = new GsonBuilder();
 									Gson gson = gsonBuilder.create();
@@ -442,7 +443,7 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
 											BZAppApplication.acceptedAppointmentsList.add(appointment);
 											
 											// Date Conversion
-											SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // 2016-07-27 08:30:00
+											SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm"); // 2016-07-27 08:30:00
 											try {
 												Log.i("Checking", "Checking: " + getTimeEndOfDay());
 												Log.i("Checking", "Checking: " + getTimeStartOfDay());
