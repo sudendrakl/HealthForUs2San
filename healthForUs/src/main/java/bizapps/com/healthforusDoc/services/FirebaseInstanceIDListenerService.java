@@ -1,8 +1,6 @@
 package bizapps.com.healthforusDoc.services;
 
-import android.content.Intent;
-import android.util.Log;
-import bizapps.com.healthforusDoc.utills.Constants;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -22,14 +20,13 @@ public class FirebaseInstanceIDListenerService  extends FirebaseInstanceIdServic
   @Override
   public void onTokenRefresh() {
     // Get updated InstanceID token.
-    String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-    Log.d(TAG, "Refreshed token: " + refreshedToken);
     // TODO: Implement this method to send any registration to your app's servers.
     // send this to server sendRegistrationToServer(refreshedToken);
-    Intent intent = new Intent(this, RegistrationService.class);
+    //Intent intent = new Intent(this, RegistrationService.class);
     //intent.putExtra(Constants.IntentExtra.AUTH_TOKEN, auth_token); //TODO auth token got via app registration... not sure why its another api
-    intent.putExtra(Constants.IntentExtra.GCM_KEY, refreshedToken);
-    startService(intent);
+    //startService(intent);
+
+    System.out.println("shit shit shit gcmKey=" + FirebaseInstanceId.getInstance().getToken());
   }
 
 }

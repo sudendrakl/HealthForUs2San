@@ -33,12 +33,15 @@ import com.squareup.picasso.Picasso;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -87,7 +90,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	private boolean isRegister = true;
 	private int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 100;
 	private int SELECT_PHOTO = 200;
-	private TextView browse_txt,locationDoc,location_hosNew;
+	private TextView browse_txt,locationDoc,location_hosNew,tv_terms,tv_policy;
 	private LinearLayout doctor_layout, hospital_layout;
 	private RadioButton doctorType, hospitalType;
 	RadioGroup radioGroup;
@@ -153,6 +156,25 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			submitBtn.setText("EDIT PROFILE");
 			updateEditProfileUI();
 		}
+		tv_terms = (TextView) findViewById(R.id.t2);
+		tv_policy = (TextView) findViewById(R.id.t3);
+
+		tv_terms.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				termsDialog("Terms and Conditions","tt");
+
+			}
+		});
+
+		tv_policy.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				termsDialog("Privacy Policy","PP");
+
+			}
+		});
+
 	}
 
 	private void updateDoctorUILayout() {
@@ -853,46 +875,47 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 
 
 
-				public void splSelection(){
-		boolean[] checkedReceivers = new boolean[preceivers.length];
-		int count = preceivers.length;
+				public void splSelection() {
+					if (specailiation!=null && specailiation.size()!=0) {
 
-		for(int i = 0; i < count-1; i++)
-			checkedReceivers[i] = pselectedReceivers.contains(preceivers[i]);
+					boolean[] checkedReceivers = new boolean[preceivers.length];
+					int count = preceivers.length;
 
-		DialogInterface.OnMultiChoiceClickListener receiversDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-				if(isChecked){
-					pselectedReceivers.add(preceivers[which]);
-					}
-				else{
-					pselectedReceivers.remove(preceivers[which]);
-					}
-				// onChangeSelectedReceivers();
-			}
-		};
+					for (int i = 0; i < count - 1; i++)
+						checkedReceivers[i] = pselectedReceivers.contains(preceivers[i]);
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-		builder
-				.setTitle("Select Specialization")
-				.setMultiChoiceItems(preceivers, checkedReceivers, receiversDialogListener)
-				.setCancelable(false)
-				.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						if(isDoctor) {
-							tvSpecilization.setText(" ");
-							tvSpecilization.setText(getSpecialization());
+					DialogInterface.OnMultiChoiceClickListener receiversDialogListener = new DialogInterface.OnMultiChoiceClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+							if (isChecked) {
+								pselectedReceivers.add(preceivers[which]);
+							} else {
+								pselectedReceivers.remove(preceivers[which]);
+							}
+							// onChangeSelectedReceivers();
 						}
-						else{
-							tvSpecilizationHos.setText(" ");
-							tvSpecilizationHos.setText(getSpecialization());
-						}
-						dialog.dismiss();
-					}
-				});
-		AlertDialog dialog = builder.create();
-		dialog.show();
+					};
+
+					AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+					builder
+							.setTitle("Select Specialization")
+							.setMultiChoiceItems(preceivers, checkedReceivers, receiversDialogListener)
+							.setCancelable(false)
+							.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									if (isDoctor) {
+										tvSpecilization.setText(" ");
+										tvSpecilization.setText(getSpecialization());
+									} else {
+										tvSpecilizationHos.setText(" ");
+										tvSpecilizationHos.setText(getSpecialization());
+									}
+									dialog.dismiss();
+								}
+							});
+					AlertDialog dialog = builder.create();
+					dialog.show();
+				}
 	}
 
 	public String getSpecialization(){
@@ -915,5 +938,186 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	@Override
 	public void onResume(){
 		super.onResume();
+	}
+
+	public void termsDialog(String title,String text){
+		final Dialog dialog=new Dialog(this,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+		dialog.setContentView(R.layout.terms_layout);
+
+		TextView titleTv = (TextView) dialog.findViewById(R.id.title_text);
+		titleTv.setText(title);
+		ImageView imgView = (ImageView) dialog.findViewById(R.id.imageView1);
+		imgView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.cancel();
+			}
+		});
+
+		String terms="";
+		if(text.equalsIgnoreCase("pp")){
+			terms  = "Welcome to Medico4us!\n" +
+					"These terms and conditions outline the rules and regulations for the use of Medico4us Website/Application. \n" +
+					"By accessing this website, we assume you accept these terms and conditions in full. Do not continue to use Medico4us application or website if you do not accept all of the terms and conditions stated on this page.\n" +
+					"The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: \"Client\", “You” and “Your” refers to you, the person accessing this website and accepting the Company’s terms and conditions. \"The Company\", “Ourselves”, “We”, “Our” and \"Us\", refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services/products, in accordance with and subject to, prevailing law of India. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.\n" +
+					"Cookies\n" +
+					"We employ the use of cookies. By using Medico4us website you consent to the use of cookies in accordance with Medico4us privacy policy.\n" +
+					"Most of the modern day interactive web sites/ applications use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.\n" +
+					"License\n" +
+					"Unless otherwise stated, Medico4us and/or it’s licensors own the intellectual property rights for all material on Medico4us All intellectual property rights are reserved. You may view and/or print pages for your own personal use subject to restrictions set in these terms and conditions.\n" +
+					"You must not:\n" +
+					"Republish material from Medico4us\n" +
+					"Sell, rent or sub-license material fromMedico4us\n" +
+					"Reproduce, duplicate or copy material from Medico4us\n" +
+					"Redistribute content from Medico4us (unless content is specifically made for redistribution).\n" +
+					"\n" +
+					"User Comments\n" +
+					"This Agreement shall begin on the date hereof.\n" +
+					"Certain parts of this application/website offer the opportunity for users to post and exchange opinions, information, material and data ('Comments') in areas of the feedback(website/application). Medico4us does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of Medico4us, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws Medico4us shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website/application.\n" +
+					"Medico4us reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.\n" +
+					"You warrant and represent that: You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;\n" +
+					"The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party;\n" +
+					"The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy\n" +
+					"The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.\n" +
+					"You hereby grant to Medico4us a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.\n" +
+					"Hyperlinking to our Content\n" +
+					"The following organizations may link to our Web site without prior written approval:\n" +
+					"Government agencies;\n" +
+					"Search engines;\n" +
+					"News organizations;\n" +
+					"\n" +
+					"Online directory distributors when they list us in the directory may link to our Web site/application in the same manner as they hyperlink to the Web sites of other listed businesses; and System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.\n" +
+					"These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.\n" +
+					"We may consider and approve in our sole discretion other link requests from the following types of organizations:\n" +
+					"Commonly-known consumer and/or business information sources such as Chambers of Commerce, community sites; associations or other groups representing charities, including charity giving sites, online directory distributors; internet portals; accounting, law and consulting firms whose primary clients are businesses; and trade associations.\n" +
+					"We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Medico4us; and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.\n" +
+					"These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services; and (c) fits within the context of the linking party's site.\n" +
+					"Approved organizations may hyperlink to our Web site as follows:\n" +
+					"By use of our corporate name; or\n" +
+					"By use of the uniform resource locator (Web address) being linked to; or\n" +
+					"By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party's site.\n" +
+					"No use of (name)’s logo or other artwork will be allowed for linking absent a trademark license agreement.\n" +
+					"\n" +
+					"Reservation of Rights\n" +
+					"We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site/application. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site/application, you agree to be bound to and abide by these linking terms and conditions.\n" +
+					"Whilst we endeavor to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.\nWelcome to Medico4us!\n" +
+					"These terms and conditions outline the rules and regulations for the use of Medico4us Website/Application. \n" +
+					"By accessing this website, we assume you accept these terms and conditions in full. Do not continue to use Medico4us application or website if you do not accept all of the terms and conditions stated on this page.\n" +
+					"The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: \"Client\", “You” and “Your” refers to you, the person accessing this website and accepting the Company’s terms and conditions. \"The Company\", “Ourselves”, “We”, “Our” and \"Us\", refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services/products, in accordance with and subject to, prevailing law of India. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.\n" +
+					"Cookies\n" +
+					"We employ the use of cookies. By using Medico4us website you consent to the use of cookies in accordance with Medico4us privacy policy.\n" +
+					"Most of the modern day interactive web sites/ applications use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.\n" +
+					"License\n" +
+					"Unless otherwise stated, Medico4us and/or it’s licensors own the intellectual property rights for all material on Medico4us All intellectual property rights are reserved. You may view and/or print pages for your own personal use subject to restrictions set in these terms and conditions.\n" +
+					"You must not:\n" +
+					"Republish material from Medico4us\n" +
+					"Sell, rent or sub-license material fromMedico4us\n" +
+					"Reproduce, duplicate or copy material from Medico4us\n" +
+					"Redistribute content from Medico4us (unless content is specifically made for redistribution).\n" +
+					"\n" +
+					"User Comments\n" +
+					"This Agreement shall begin on the date hereof.\n" +
+					"Certain parts of this application/website offer the opportunity for users to post and exchange opinions, information, material and data ('Comments') in areas of the feedback(website/application). Medico4us does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of Medico4us, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws Medico4us shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website/application.\n" +
+					"Medico4us reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.\n" +
+					"You warrant and represent that: You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;\n" +
+					"The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party;\n" +
+					"The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy\n" +
+					"The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.\n" +
+					"You hereby grant to Medico4us a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.\n" +
+					"Hyperlinking to our Content\n" +
+					"The following organizations may link to our Web site without prior written approval:\n" +
+					"Government agencies;\n" +
+					"Search engines;\n" +
+					"News organizations;\n" +
+					"\n" +
+					"Online directory distributors when they list us in the directory may link to our Web site/application in the same manner as they hyperlink to the Web sites of other listed businesses; and System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.\n" +
+					"These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.\n" +
+					"We may consider and approve in our sole discretion other link requests from the following types of organizations:\n" +
+					"Commonly-known consumer and/or business information sources such as Chambers of Commerce, community sites; associations or other groups representing charities, including charity giving sites, online directory distributors; internet portals; accounting, law and consulting firms whose primary clients are businesses; and trade associations.\n" +
+					"We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Medico4us; and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.\n" +
+					"These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services; and (c) fits within the context of the linking party's site.\n" +
+					"Approved organizations may hyperlink to our Web site as follows:\n" +
+					"By use of our corporate name; or\n" +
+					"By use of the uniform resource locator (Web address) being linked to; or\n" +
+					"By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party's site.\n" +
+					"No use of (name)’s logo or other artwork will be allowed for linking absent a trademark license agreement.\n" +
+					"\n" +
+					"Reservation of Rights\n" +
+					"We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site/application. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site/application, you agree to be bound to and abide by these linking terms and conditions.\n" +
+					"Whilst we endeavor to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.\nPrivacy Policy\n" +
+					"The information provided in Medico4us are posted by registered members of this website and moderated by the team of Medico4us. Doctors & Patients full name, contact number and email id is the only identifying information that is being collected on the application about a user/reader/vendor when they list/post or comment. Medico4us will sell or make use of such information to third parties. We will occasionally analyze such information and will share the results of such analysis in our advisory section. Medico4us may change the policy anytime by posting changes online. Medico4us is not responsible for third party content accessible through the site, including opinions, advice, rating, reviews, statements, and advertisements, and user shall bear all risks associated with the use of such content. \n" +
+					"Medico4us is not responsible for any loss or damage of any sort user may incur from dealing with any third party. This policy describes how Medico4us collects and handles Doctors/Patients/Customers information to help us serve our services better. Personal information is any information that identifies you, such as your name, address, email address, phone number, and previous use of Medico4us application. By visiting our site/application, you accept the practices outlined in this privacy policy.\n" +
+					"COLLECTING INFORMATION\n" +
+					"Medico4us collects information when you register with Medico4us or update your details to receive our newsletters, participate in discussions, events, promotions or any upcoming activities, which will be informed to you over time-to-time. When you register with Medico4us, we may ask for information such as your name, phone number, email address, city, state, and zip code. Once you create and sign into your account, Medico4us automatically receives information from your browser, such as your IP address, and cookies. Cookies enable our platform to recognize you as you move throughout our website. Your web browser also allows us to track statistics such as type of browsers on our platform, page views, navigational patterns, and high traffic areas. This information does NOT track personally identifiable information about our users.\n" +
+					"\n" +
+					"PROTECTING INFORMATION\n" +
+					"Occasionally, we work with trusted partners who work on our behalf to improve our services to you. These partners may have access to your personal information after they have agreed to our confidentiality agreement. In the case whereMedico4us is acquired by or merged with another company, Medico4us may disclose your personal information to a purchaser that agrees to abide by the terms and conditions of this privacy policy.\n" +
+					"We may disclose information about you if required to do so by law, governmental request, process, or court order or based on our good faith belief that there is suspected fraud or situation involving potential threats to the safety of any person or violation of the Medico4us terms of use.\n" +
+					"MARKETING COMMUNICATIONS\n" +
+					"In addition to using your personal information to improve and enhance your experience with Medico4us, we use information to better target our marketing to your behavioral preferences. If you create an account on our platform, you will be required to provide your email address & contact number and you may automatically be added to our email list and receive updates. If you do not wish to receive Medico4us updates, emails, you may opt out by clicking on the unsubscribe link found at the bottom of all Medico4us marketing emails. Please be aware that it can take up to 30 business days to remove you from our marketing email lists.\n" +
+					"\n" +
+					"\n" +
+					"\n" +
+					"NOTIFICATION OF CHANGES\n" +
+					"Medico4us is committed to protecting your privacy and may update this policy from time-to-time. Changes will be updated on our website with the date of the most recent update. We will notify you about significant changes to our privacy policy by sending a notice to the primary email address on your account.\n" +
+					"Privacy Policy Changes\n" +
+					"Although most changes are likely to be minor, Medico4us may change its Privacy Policy from time to time, and in Medico4us sole discretion. Medico4us encourages visitors to frequently check this page for any changes to its Privacy Policy. Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.\n" +
+					"Aggregated Statistics\n" +
+					"Medico4us may collect statistics about the behavior of visitors to its website/ application. \n" +
+					"Medico4us may display this information publicly or provide it to others. However, Medico4us does not disclose your personally-identifying information.\n";
+		}
+		else{
+			terms = "Welcome to Medico4us!\n" +
+					"These terms and conditions outline the rules and regulations for the use of Medico4us Website/Application. \n" +
+					"By accessing this website, we assume you accept these terms and conditions in full. Do not continue to use Medico4us application or website if you do not accept all of the terms and conditions stated on this page.\n" +
+					"The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: \"Client\", “You” and “Your” refers to you, the person accessing this website and accepting the Company’s terms and conditions. \"The Company\", “Ourselves”, “We”, “Our” and \"Us\", refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services/products, in accordance with and subject to, prevailing law of India. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.\n" +
+					"Cookies\n" +
+					"We employ the use of cookies. By using Medico4us website you consent to the use of cookies in accordance with Medico4us privacy policy.\n" +
+					"Most of the modern day interactive web sites/ applications use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.\n" +
+					"License\n" +
+					"Unless otherwise stated, Medico4us and/or it’s licensors own the intellectual property rights for all material on Medico4us All intellectual property rights are reserved. You may view and/or print pages for your own personal use subject to restrictions set in these terms and conditions.\n" +
+					"You must not:\n" +
+					"Republish material from Medico4us\n" +
+					"Sell, rent or sub-license material fromMedico4us\n" +
+					"Reproduce, duplicate or copy material from Medico4us\n" +
+					"Redistribute content from Medico4us (unless content is specifically made for redistribution).\n" +
+					"\n" +
+					"User Comments\n" +
+					"This Agreement shall begin on the date hereof.\n" +
+					"Certain parts of this application/website offer the opportunity for users to post and exchange opinions, information, material and data ('Comments') in areas of the feedback(website/application). Medico4us does not screen, edit, publish or review Comments prior to their appearance on the website and Comments do not reflect the views or opinions of Medico4us, its agents or affiliates. Comments reflect the view and opinion of the person who posts such view or opinion. To the extent permitted by applicable laws Medico4us shall not be responsible or liable for the Comments or for any loss cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website/application.\n" +
+					"Medico4us reserves the right to monitor all Comments and to remove any Comments which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.\n" +
+					"You warrant and represent that: You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;\n" +
+					"The Comments do not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party;\n" +
+					"The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy\n" +
+					"The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.\n" +
+					"You hereby grant to Medico4us a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.\n" +
+					"Hyperlinking to our Content\n" +
+					"The following organizations may link to our Web site without prior written approval:\n" +
+					"Government agencies;\n" +
+					"Search engines;\n" +
+					"News organizations;\n" +
+					"\n" +
+					"Online directory distributors when they list us in the directory may link to our Web site/application in the same manner as they hyperlink to the Web sites of other listed businesses; and System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.\n" +
+					"These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.\n" +
+					"We may consider and approve in our sole discretion other link requests from the following types of organizations:\n" +
+					"Commonly-known consumer and/or business information sources such as Chambers of Commerce, community sites; associations or other groups representing charities, including charity giving sites, online directory distributors; internet portals; accounting, law and consulting firms whose primary clients are businesses; and trade associations.\n" +
+					"We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Medico4us; and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.\n" +
+					"These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services; and (c) fits within the context of the linking party's site.\n" +
+					"Approved organizations may hyperlink to our Web site as follows:\n" +
+					"By use of our corporate name; or\n" +
+					"By use of the uniform resource locator (Web address) being linked to; or\n" +
+					"By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party's site.\n" +
+					"No use of (name)’s logo or other artwork will be allowed for linking absent a trademark license agreement.\n" +
+					"\n" +
+					"Reservation of Rights\n" +
+					"We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our Web site/application. You agree to immediately remove all links to our Web site upon such request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuing to link to our Web site/application, you agree to be bound to and abide by these linking terms and conditions.\n" +
+					"Whilst we endeavor to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.\n";
+		}
+
+		TextView termsTv = (TextView) dialog.findViewById(R.id.tv_terms);
+		termsTv.setText(terms);
+
+		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+		dialog.show();
 	}
 }

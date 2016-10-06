@@ -241,11 +241,11 @@ public class SchuduleActivity extends BaseActivity
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.item_change_password:
-			Intent register = new Intent(this, ForgotPasswordActivity.class);
-			startActivity(register);
-			overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-			return true;
+//		case R.id.item_change_password:
+//			Intent register = new Intent(this, ForgotPasswordActivity.class);
+//			startActivity(register);
+//			overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//			return true;
 		case R.id.item_schedule_timings:
 			Intent scheduleIntentTimings = new Intent(this, SchuduleActivity.class);
 			startActivity(scheduleIntentTimings);

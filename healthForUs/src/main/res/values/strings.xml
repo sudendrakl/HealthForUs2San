@@ -114,5 +114,63 @@
   <string name="no_location_data_provided">No location data provided</string>
   <string name="service_not_available">Sorry, the service is not available</string>
   <string name="invalid_lat_long_used">Invalid latitude or longitude used</string>
-  <string name="title_activity_web">WebActivity</string>
+    <string name="terms"><u><i>Terms and Conditions</i></u></string>
+        <string name="privacy"><u><i>Privacy policy</i></u></string>
+  <string name="title_activity_web">Medico4Us Doctor</string>
+
+  <string name="different_colors_indicate_different_nutrients">
+    <![CDATA[
+ <p><b>Different colors indicate different nutrients</b><p/>
+The fruits and vegetables we eat indicate different nutrient it is comprised of.
+    Health experts and nutritionists advise all to have our plates filled with coloured fruits and vegetables. It is the easiest things one can do get maximum nutrients and improve the overall health.<br/>
+        Red Colour<br/>
+They are rich anti-oxidants. Red coloured foods enhance the blood and purify them. They put a battle against the harmful free-radicals. Pomegranate, Beets, Papaya, Watermelon, Kidney Beans, Guava, Red Apples, Raspberries, Tomato, Cherries etc are red coloured ones.<br/>
+Green Colour<br/>
+Green fruits and vegetables are rich in Vitamin A, Vitamin C and Vitamin K.  They are good for our eyes and bones. These type of foods aid blood clot under circumstance of accident and prevents heavy blood loss. Leafy vegetables, Avocados, Cucumber, Beans, Ladies Finger, Green Grapes are some of the green coloured fruits and veggies.<br/>
+  ]]>
+  </string>
+
+  <string name="enhance_your_brain_power_with_kapalabhati_yoga">
+        <![CDATA[
+<p><b>Enhance your Brain power with Kapalabhati Yoga</b><p/>
+Human brain is one of the complex structures in the entire universe. Brain is considered as the center of our nervous system.
+Below are the benefits of doing Kapalabhati Yoga:
+It enhances our memory power.
+Regular practice of this yoga, helps remove unwanted toxins from the body.
+This yoga improves blood supply to the brain.
+In invigorates the brain cells and thus improves its power and performance.
+Not giving any work to the brain makes it very dull. This yoga activates the brain.
+Also this Kapalabhati yoga is a cure to digestive disorders.
+   ]]>
+ </string>
+  <string name="good_sleep_is_a_key_to_happy_life">
+        <![CDATA[
+<p><b>Good Sleep is a Key to Happy Life</b><p/>
+One of the important pillars to a happy and healthy life is Sleep. If our sleep is affected, equilibrium changes in our body and the overall health of our body is affected.<br/>
+Here’s what you can do to improve your sleep:<br/>
+Change your lifestyle. Ensure that you do not use your smart phone or laptop or stay glued to your television after 10pm.<br/>
+Have a light dinner. See to it that you are done with your dinner two hours before you go to bed.<br/>
+Include more of wheat products in your diet, especially for the dinner.<br/>
+Listen to pleasant music and perfume extracted from flowers help one to get sleep.<br/>
+Have a glass of un-skimmed buffalo milk before sleep.<br/>
+
+   ]]>
+ </string>
+  <string name="what_are_the_benefits_of_barefoot_training">
+        <![CDATA[
+<p><b>What are the benefits of Barefoot training?</b><p/>
+We never step out of our home barefoot. Most time of the day we cover our foot with slippers or shoes. Doing so, you will not get any benefits. You will get the below benefits with barefoot training.<br/>
+Our feet are the direct contact point of our body with the ground. With barefoot training have a stable body. Only if our foot is stable, then only our knee and hips and the whole body can be stable.<br/>
+Many will not know that our feet accommodate over thirty per cent of the joints in our body. So most of the injuries have their roots in the feet. Barefoot training you can prevent injuries.<br/>
+Barefoot training increases the stability and makes our body more flexible. You can prepare your body for a wide range of action.<br/>
+   ]]>
+ </string>
+  <string name="why_breakfast_is_crucial_for_us">
+       <![CDATA[
+ <p><b>Why breakfast is crucial for us?</b><p/>
+You might have come across the saying - "Breakfast like a king, lunch like a prince and dine like a pauper". But not many are giving importance to breakfast. Many miss their breakfast.  <br/>
+Skipping breakfast can affect the functioning of vital organs in our body. From the time of the last dinner to the time of breakfast, there is a gap of over 8-10 hours. In this time, the blood sugar levels in the body dips and the metabolic rate of our body falls.<br/>
+Health experts say that over one-third of our calorie requirement should come from breakfast. So always start your day with a heavy breakfast.<br/>
+   ]]>
+ </string>
 </resources>

@@ -2,104 +2,116 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
-    enforceUniquePackageName = false
-    /*TODO defaultConfig {
-        applicationId "bizapps.com.healthforusDoc"
-        minSdkVersion 14
-        targetSdkVersion 21
-    }*/
+  compileSdkVersion 24
+  buildToolsVersion "24.0.0"
+  enforceUniquePackageName = false
+  /*TODO defaultConfig {
+      applicationId "bizapps.com.healthforusDoc"
+      minSdkVersion 14
+      targetSdkVersion 21
+  }*/
 
-    defaultConfig {
-        applicationId "bizapps.com.healthforusDoc"
-        minSdkVersion 15
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders = [manifestApplicationId: "${applicationId}",
-                                onesignal_app_id: "0023fa4a-0f5b-4b1c-ace5-21237ba74b4f",
-                                onesignal_google_project_number: "176564602454"]
+  defaultConfig {
+    applicationId "bizapps.com.healthforusDoc"
+    minSdkVersion 15
+    targetSdkVersion 24
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    manifestPlaceholders = [manifestApplicationId          : "${applicationId}",
+                            onesignal_app_id               : "0023fa4a-0f5b-4b1c-ace5-21237ba74b4f",
+                            onesignal_google_project_number: "176564602454"]
+  }
+
+  signingConfigs {
+    /*TODO        configRelease {
+                keyAlias 'alias'
+                keyPassword '123456'
+                storeFile file('C:/Users/venkatat/Desktop/JKS/DoctorPlus.jks')
+                storePassword '123456'
+            }*/
+    release {
+      storeFile file("release-keystore.jks")
+      storePassword "release-keystore"
+      keyAlias "release-keystore"
+      keyPassword "release-keystore"
     }
-
-    signingConfigs {
-        /*TODO        configRelease {
-                    keyAlias 'alias'
-                    keyPassword '123456'
-                    storeFile file('C:/Users/venkatat/Desktop/JKS/DoctorPlus.jks')
-                    storePassword '123456'
-                }*/
-        release {
-            storeFile file("release-keystore.jks")
-            storePassword "release-keystore"
-            keyAlias "release-keystore"
-            keyPassword "release-keystore"
-        }
-        debug {
-            storeFile file("debug.keystore")
-            storePassword "android"
-        }
+    debug {
+      storeFile file("debug.keystore")
+      storePassword "android"
     }
+  }
 
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
+  lintOptions {
+    checkReleaseBuilds false
+    abortOnError false
+  }
+
+  buildTypes {
+    release {
+      debuggable true
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.release
+      versionNameSuffix "-release"
+      buildConfigField "String", "BASE_URL", '"http://139.59.5.88:6578/"' //TODO
     }
-
-    buildTypes {
-        release {
-            debuggable true
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
-            versionNameSuffix "-release"
-            buildConfigField "String", "BASE_URL", '"ADD YOUR URL HERE"' //TODO
-
-        }
-        debug {
-            debuggable true
-            minifyEnabled false
-            signingConfig signingConfigs.debug
-            versionNameSuffix "-debug"
-            buildConfigField "String", "BASE_URL", '"http://139.59.5.88:6578/"' //TODO for debug
-        }
+    debug {
+      debuggable true
+      minifyEnabled false
+      signingConfig signingConfigs.debug
+      versionNameSuffix "-debug"
+      buildConfigField "String", "BASE_URL", '"http://139.59.5.88:6578/"' //TODO for debug
+      multiDexEnabled true
     }
+  }
+  packagingOptions {
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/LICENSE'
+//    exclude 'META-INF/NOTICE.txt' // will not include NOTICE file
+//    exclude 'META-INF/LICENSE.txt' // will not include LICENSE file
+//    exclude 'META-INF/LICENSE-FIREBASE.txt'
+  }
+  useLibrary 'org.apache.http.legacy'
+
 }
 
 dependencies {
-    //    compile project(':design')
-//    compile files('libs/httpclientandroidlib-1.2.0.jar')
-//    compile files('libs/volley.jar')
-//    compile files('libs/gson-2.2.4.jar')
-//    compile files('libs/picasso-2.5.2.jar')
-//    compile 'com.google.android.gms:play-services-location:8.1.0'
+  //    compile project(':design')
+  //    compile files('libs/httpclientandroidlib-1.2.0.jar')
+  //    compile files('libs/volley.jar')
+  //    compile files('libs/gson-2.2.4.jar')
+  //    compile files('libs/picasso-2.5.2.jar')
+  //    compile 'com.google.android.gms:play-services-location:8.1.0'
 
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile 'com.android.support:appcompat-v7:24.2.1'
+  compile 'com.android.support:support-v4:24.2.1'
+  compile 'com.android.support:design:24.2.1'
 
-    compile 'com.android.support:design:24.2.1'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:support-v4:24.2.1'
-    compile 'com.android.support:design:24.2.1'
+  testCompile 'junit:junit:4.12'
 
-    testCompile 'junit:junit:4.12'
+  compile 'com.google.firebase:firebase-core:9.4.0'
+  compile 'com.google.firebase:firebase-crash:9.4.0'
+  compile 'com.onesignal:OneSignal:3.3.0@aar'
+  // Required for OneSignal, even if you have added FCM.
+  compile 'com.google.android.gms:play-services-gcm:9.4.0'
+  compile "com.google.android.gms:play-services-location:9.4.0"
+  compile "com.google.android.gms:play-services-places:9.4.0"
 
-    compile 'com.google.firebase:firebase-core:9.4.0'
-    compile 'com.google.firebase:firebase-crash:9.4.0'
-    compile 'com.onesignal:OneSignal:3.3.0@aar'
-    // Required for OneSignal, even if you have added FCM.
-    compile 'com.google.android.gms:play-services-gcm:9.4.0'
+  compile 'com.squareup.okhttp3:okhttp:3.4.1'
+  provided 'org.projectlombok:lombok:1.14.4'
+  compile 'com.google.code.gson:gson:2.4'
 
-    // Required for geotagging
-    compile "com.google.android.gms:play-services-location:9.4.0"
-    compile "com.google.android.gms:play-services-places:9.4.0"
+  compile 'com.squareup.picasso:picasso:2.4.0'
 
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    provided 'org.projectlombok:lombok:1.14.4'
-    compile 'com.google.code.gson:gson:2.4'
+  compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+  compile ('org.apache.httpcomponents:httpmime:4.5.2') {
+    exclude module: 'org.apache.httpcomponents:httpclient'
+  }
+
+  compile 'org.apache.httpcomponents:httpcore:4.4.5'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -15,3 +15,18 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+## Square Picasso specific rules ##
+## https://square.github.io/picasso/ ##
+
+-dontwarn com.squareup.okhttp.**
+
+-dontnote android.net.http.*
+-dontnote org.apache.commons.**
+-dontnote org.apache.http.**
+-keep class org.apache.http.** { *; }
+
+# Okio
+-keep class sun.misc.Unsafe { *; }
+-dontwarn java.nio.file.*
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-dontwarn okio.**

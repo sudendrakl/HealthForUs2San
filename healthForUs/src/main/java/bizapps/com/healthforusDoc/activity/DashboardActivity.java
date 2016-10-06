@@ -1,30 +1,5 @@
 package bizapps.com.healthforusDoc.activity;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.NetworkImageView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -54,12 +29,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 import bizapps.com.healthforusDoc.BZAppApplication;
 import bizapps.com.healthforusDoc.R;
-import bizapps.com.healthforusDoc.ScheduleVactionActivity;
 import bizapps.com.healthforusDoc.model.Appiontments;
 import bizapps.com.healthforusDoc.model.Blogs;
 import bizapps.com.healthforusDoc.utills.CircularImageView;
 import bizapps.com.healthforusDoc.utills.ConnectivityReceiver;
 import bizapps.com.healthforusDoc.utills.URLConstants;
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.NetworkImageView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class DashboardActivity extends BaseActivity implements OnClickListener, OnMenuItemClickListener{
 	
@@ -82,9 +78,15 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
     public final static String[] aftnHrs = {"13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00"};
     public final static String[] lateHrs = {"19:00 - 20:00", "20:00 - 21:00", "21:00 - 22:00", "22:00 - 23:00", "23:00 - 00:00", "00:00 - 01:00"};
     
-    private List<String> scheduleTimes; 
-    
-    @Override
+    private List<String> scheduleTimes;
+
+	@Override protected void onStart() {
+		super.onStart();
+		//Intent intent = new Intent(this, RegistrationService.class);
+		//startService(intent);
+	}
+
+	@Override
     protected void onResume() {
     	super.onResume();
     	
@@ -188,14 +190,16 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
 				}
 			// }
 		} else if(v.getId() == R.id.blogs){
-			if(blog_layout.getVisibility() == View.VISIBLE){
-				blogs.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.downarrow, 0);
-				blog_layout.setVisibility(View.GONE);
-			} else {
-				blogs.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.uparrow, 0);
-				blog_layout.setVisibility(View.VISIBLE);
-				doBlogServiceRequest();
-			}
+			//if(blog_layout.getVisibility() == View.VISIBLE){
+			//	blogs.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.downarrow, 0);
+			//	blog_layout.setVisibility(View.GONE);
+			//} else {
+			//	blogs.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.uparrow, 0);
+			//	blog_layout.setVisibility(View.VISIBLE);
+			//	doBlogServiceRequest();
+			//}
+      Intent intent = new Intent(this, BlogListActivity.class);
+      startActivity(intent);
 		}
 	}
 	
@@ -429,7 +433,8 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
 								if(response.getString("status").equalsIgnoreCase("fail"))
 									Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT).show();
 								else {
-									Log.i("AppointmentListResponse", response.toString());
+									Log.e("Dashboard Response",""+response.toString());
+									Log.i("APPOINTMENTS", response.toString());
 									JSONArray jArray = response.getJSONArray("data");
 									GsonBuilder gsonBuilder = new GsonBuilder();
 									Gson gson = gsonBuilder.create();
@@ -537,7 +542,7 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
 				}, new Response.ErrorListener() {
 					@Override
 					public void onErrorResponse(VolleyError error) {
-						Log.i("Volley Error", error.getMessage());
+						Log.e("Volley Error", ""+error.getMessage());
 						Toast.makeText(getApplicationContext(), "Something happend. Please try again...", Toast.LENGTH_SHORT).show();
 						pDialog.dismiss();
 					}
@@ -683,11 +688,11 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.item_change_password:
-			Intent register = new Intent(this, ForgotPasswordActivity.class);
-			startActivity(register);
-			overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-			return true;
+//		case R.id.item_change_password:
+//			Intent register = new Intent(this, ForgotPasswordActivity.class);
+//			startActivity(register);
+//			overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//			return true;
 		case R.id.item_schedule_timings:
 			Intent scheduleIntentTimings = new Intent(this, SchuduleActivity.class);
 			startActivity(scheduleIntentTimings);

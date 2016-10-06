@@ -1225,7 +1225,45 @@
             android:background="@drawable/rounded_button"
             android:text="@string/register"
             android:textColor="@color/icons"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="20dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            >
+            <TextView
+                android:id="@+id/t1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_centerHorizontal="true"
+                android:text="By Signing up you agree to the "/>
+            <TextView
+                android:id="@+id/t2"
+                android:layout_below="@+id/t1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#494BD2"
+                android:text="@string/terms"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"
+                />
+            <TextView
+                android:id="@+id/t3"
+                android:layout_below="@+id/t2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#494BD2"
+                android:textSize="20sp"
+                android:text="@string/privacy"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

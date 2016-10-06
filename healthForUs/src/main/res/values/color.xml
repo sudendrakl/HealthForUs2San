@@ -9,7 +9,7 @@
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
-    
+    <color name="wallet_holo_blue_light">#ff33b5e5</color>
     <color name="health_color">#3DB44A</color>
     <color name="reject_btn">#DE5036</color>
     

@@ -50,6 +50,48 @@ public class SearchModel {
         public String our_doctors;
         public String opd_timing;
 
+        public String getPhoto_of_hospital1() {
+            return photo_of_hospital1;
+        }
+
+        public void setPhoto_of_hospital1(String photo_of_hospital1) {
+            this.photo_of_hospital1 = photo_of_hospital1;
+        }
+
+        public String getPhoto_of_hospital2() {
+            return photo_of_hospital2;
+        }
+
+        public void setPhoto_of_hospital2(String photo_of_hospital2) {
+            this.photo_of_hospital2 = photo_of_hospital2;
+        }
+
+        public String getPhoto_of_hospital3() {
+            return photo_of_hospital3;
+        }
+
+        public void setPhoto_of_hospital3(String photo_of_hospital3) {
+            this.photo_of_hospital3 = photo_of_hospital3;
+        }
+
+        public String getPhoto_of_hospital4() {
+            return photo_of_hospital4;
+        }
+
+        public void setPhoto_of_hospital4(String photo_of_hospital4) {
+            this.photo_of_hospital4 = photo_of_hospital4;
+        }
+
+        public String getPhoto_of_hospital5() {
+            return photo_of_hospital5;
+        }
+
+        public void setPhoto_of_hospital5(String photo_of_hospital5) {
+            this.photo_of_hospital5 = photo_of_hospital5;
+        }
+
+        public String photo_of_hospital1,photo_of_hospital2,photo_of_hospital3,photo_of_hospital4,photo_of_hospital5;
+
         public String getDesignation() {
             return designation;
         }

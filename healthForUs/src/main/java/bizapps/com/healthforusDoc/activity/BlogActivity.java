@@ -18,9 +18,9 @@ public class BlogActivity extends BaseActivity implements OnMenuItemClickListene
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.item_change_password:
-			Toast.makeText(this, "Comedy Clicked", Toast.LENGTH_SHORT).show();
-			return true;
+//		case R.id.item_change_password:
+//			Toast.makeText(this, "Comedy Clicked", Toast.LENGTH_SHORT).show();
+//			return true;
 		case R.id.item_logout:
 			getAppSharedPreference().setUserRemembered(false);
 			Intent login = new Intent(this, LoginActivity.class);

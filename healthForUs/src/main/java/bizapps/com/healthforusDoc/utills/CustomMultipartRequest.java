@@ -13,10 +13,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 
-import ch.boye.httpclientandroidlib.HttpEntity;
-import ch.boye.httpclientandroidlib.entity.mime.MultipartEntityBuilder;
-import ch.boye.httpclientandroidlib.entity.mime.content.FileBody;
-import ch.boye.httpclientandroidlib.entity.mime.content.StringBody;
+import bizapps.com.healthforusDoc.BZAppApplication;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 
 public class CustomMultipartRequest extends Request<String> {
 
@@ -44,21 +45,31 @@ public class CustomMultipartRequest extends Request<String> {
 	      try {
 			builder.addPart(entry, new StringBody(mKeyValue.get(entry).toString()));
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    }
 		  String mString="";
-		  int i = 1;
-	    for(File imgFile : fileArray){
-	    	if(imgFile != null) {
-				mString = String.valueOf(i);
-				builder.addPart("photo_of_hospital" + mString, new FileBody(Utility.saveBitmapToFile(imgFile)));
+		  int i = 1,j=1;
+		  if(BZAppApplication.fileHashMap!=null){
+			  if(BZAppApplication.fileHashMap.size()!=0) {
+				  for (Map.Entry<String, File> entry : BZAppApplication.fileHashMap.entrySet()) {
+					  //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getKey());
 
-				i++;
-			}
-	    }
+					  builder.addPart("photo_of_hospital" + entry.getKey(), new FileBody(Utility.saveBitmapToFile(entry.getValue())));
+				  }
+			  }
+		  }
+		else {
 
+			  for (File imgFile : fileArray) {
+				  if (imgFile != null) {
+					  mString = String.valueOf(i);
+					  builder.addPart("photo_of_hospital" + mString, new FileBody(Utility.saveBitmapToFile(imgFile)));
+
+					  i++;
+				  }
+			  }
+		  }
 		  if(mFile!=null){
 			  builder.addPart("certificate_file", new FileBody(Utility.saveBitmapToFile(mFile)));
 		  }

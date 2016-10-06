@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import bizapps.com.healthforusDoc.BZAppApplication;
 import bizapps.com.healthforusDoc.R;
+import bizapps.com.healthforusDoc.ScheduleVactionActivity;
 import bizapps.com.healthforusDoc.model.Appiontments;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -125,19 +126,16 @@ public class AppointmentActivity extends BaseActivity implements OnClickListener
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return items.size();
 		}
 
 		@Override
 		public Object getItem(int arg0) {
-			// TODO Auto-generated method stub
 			return items.get(arg0);
 		}
 
 		@Override
 		public long getItemId(int arg0) {
-			// TODO Auto-generated method stub
 			return arg0;
 		}
 
@@ -294,11 +292,11 @@ public class AppointmentActivity extends BaseActivity implements OnClickListener
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.item_change_password:
-			Intent register = new Intent(this, ForgotPasswordActivity.class);
-			startActivity(register);
-			overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-			return true;
+//		case R.id.item_change_password:
+//			Intent register = new Intent(this, ForgotPasswordActivity.class);
+//			startActivity(register);
+//			overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//			return true;
 		case R.id.item_schedule_timings:
 			Intent scheduleIntentTimings = new Intent(this, SchuduleActivity.class);
 			startActivity(scheduleIntentTimings);

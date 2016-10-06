@@ -102,12 +102,14 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
     List<File> mFiles;
     private File[] arrayFile = new File[5];
     File mFile;
+    //HashMap<String,File> hashFiles = new HashMap<String,File>();
     ImageView img01,img02,img03,img04,img05;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ep);
+        BZAppApplication.fileHashMap = new HashMap<>();
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup1);
         radioGroup.setVisibility(View.GONE);
         mFiles = new ArrayList<File>();
@@ -341,6 +343,21 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
             hospital_layout.setVisibility(View.VISIBLE);
             isDoctor = false;
             updateHospitalUILayout();
+        }
+        if(epData.getData().getPhoto_of_hospital1()!=null && !epData.getData().getPhoto_of_hospital1().equalsIgnoreCase("")){
+            Picasso.with(this).load(epData.getData().getPhoto_of_hospital1()).into(img01);
+        }
+        if(epData.getData().getPhoto_of_hospital2()!=null && !epData.getData().getPhoto_of_hospital2().equalsIgnoreCase("")){
+            Picasso.with(this).load(epData.getData().getPhoto_of_hospital2()).into(img02);
+        }
+        if(epData.getData().getPhoto_of_hospital3()!=null && !epData.getData().getPhoto_of_hospital3().equalsIgnoreCase("")){
+            Picasso.with(this).load(epData.getData().getPhoto_of_hospital3()).into(img03);
+        }
+        if(epData.getData().getPhoto_of_hospital4()!=null && !epData.getData().getPhoto_of_hospital4().equalsIgnoreCase("")){
+            Picasso.with(this).load(epData.getData().getPhoto_of_hospital4()).into(img04);
+        }
+        if(epData.getData().getPhoto_of_hospital5()!=null && !epData.getData().getPhoto_of_hospital5().equalsIgnoreCase("")){
+            Picasso.with(this).load(epData.getData().getPhoto_of_hospital5()).into(img05);
         }
     }
 
@@ -806,18 +823,23 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
                         mFiles.add(file);
                         if(BZAppApplication.selectedImage==1){
                             Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img01));
+                            BZAppApplication.fileHashMap.put("1",file);
                         }
                         else if(BZAppApplication.selectedImage==2){
                             Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img02));
+                            BZAppApplication.fileHashMap.put("2",file);
                         }
                         else if(BZAppApplication.selectedImage==3){
                             Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img03));
+                            BZAppApplication.fileHashMap.put("3",file);
                         }
                         else if(BZAppApplication.selectedImage==4){
                             Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img04));
+                            BZAppApplication.fileHashMap.put("4",file);
                         }
                         else if(BZAppApplication.selectedImage==5){
                             Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img05));
+                            BZAppApplication.fileHashMap.put("5",file);
                         }
                     }
                     else{
