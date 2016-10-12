@@ -106,12 +106,17 @@ dependencies {
 
   compile 'com.squareup.picasso:picasso:2.4.0'
 
-  compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
-  compile ('org.apache.httpcomponents:httpmime:4.5.2') {
-    exclude module: 'org.apache.httpcomponents:httpclient'
-  }
+//  compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+//  compile ('org.apache.httpcomponents:httpmime:4.5.2') {
+//    exclude module: 'org.apache.httpcomponents:httpclient'
+//  }
 
-  compile 'org.apache.httpcomponents:httpcore:4.4.5'
+  compile('org.apache.httpcomponents:httpmime:4.3.6') {
+    exclude module: 'httpclient'
+  }
+  compile 'org.apache.httpcomponents:httpclient-android:4.3.5'
+
+//  compile 'org.apache.httpcomponents:httpcore:4.4.5'
 }
 
 apply plugin: 'com.google.gms.google-services'
