@@ -38,7 +38,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:src="@drawable/left_menu" />
+            android:src="@drawable/ic_more_vert_white" />
 
     </RelativeLayout>
 
