@@ -16,8 +16,8 @@ android {
     applicationId "bizapps.com.healthforusDoc"
     minSdkVersion 15
     targetSdkVersion 24
-    versionCode 2
-    versionName "1.1"
+    versionCode 3
+    versionName "1.2"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     manifestPlaceholders = [manifestApplicationId          : "${applicationId}",
                             onesignal_app_id               : "0023fa4a-0f5b-4b1c-ace5-21237ba74b4f",
