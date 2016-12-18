@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bizapps.com.healthforusDoc"
-    android:versionCode="1"
-    android:versionName="1.0.1">
-
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="21" />
+    >
 
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -25,7 +20,10 @@
       android:theme="@style/AppMaterialTheme"
       >
     <!--to disable start of default launcher activity, handle click in NotificationOpened-->
-    <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
+    <meta-data
+        android:name="com.onesignal.NotificationOpened.DEFAULT"
+        android:value="DISABLE"
+        />
 
     <activity
         android:name=".activity.SplashScreenActivity"
@@ -128,7 +126,10 @@
         <action android:name="com.onesignal.NotificationExtender"/>
       </intent-filter>
     </service>
-    <service android:name=".services.RegistrationService" android:enabled="false"/>
+    <service
+        android:name=".services.RegistrationService"
+        android:enabled="false"
+        />
 
     <activity
         android:name=".activity.WebActivity"
@@ -136,7 +137,10 @@
         android:theme="@style/AppMaterialTheme"
         android:launchMode="singleTask"
         />
-    <activity android:name=".activity.BlogListActivity"/>
+    <activity android:name=".activity.BlogListActivity"
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait"
+        android:label="@string/title_activity_blog"/>
   </application>
 
 </manifest>

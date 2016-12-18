@@ -1,77 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#40000000">
-
-    <ScrollView
+    android:layout_height="wrap_content"
+    >
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingLeft="1dp"
+      android:paddingRight="1dp"
+      >
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/different_colors_indicate_different_nutrients"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/different_colors_indicate_different_nutrients"
-                android:text="@string/different_colors_indicate_different_nutrients"
-                android:layout_margin="5dp"
-
-                android:layout_marginTop="10dp"
-
-                />
-          <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="1dp" android:layout_marginBottom="1dp" android:background="@color/black80"/>
-          <TextView
-                android:id="@+id/enhance_your_brain_power_with_kapalabhati_yoga"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/enhance_your_brain_power_with_kapalabhati_yoga"
-                android:text="@string/enhance_your_brain_power_with_kapalabhati_yoga"
-              android:layout_margin="5dp"
-
-              android:layout_marginTop="5dp"
-                />
-          <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="1dp" android:layout_marginBottom="1dp" android:background="@color/black80"/>
-          <TextView
-                android:id="@+id/good_sleep_is_a_key_to_happy_life"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/good_sleep_is_a_key_to_happy_life"
-                android:text="@string/good_sleep_is_a_key_to_happy_life"
-              android:layout_margin="5dp"
-
-              android:layout_marginTop="5dp"
-
-                />
-          <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="1dp" android:layout_marginBottom="1dp" android:background="@color/black80"/>
-          <TextView
-                android:id="@+id/what_are_the_benefits_of_barefoot_training"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/what_are_the_benefits_of_barefoot_training"
-                android:text="@string/what_are_the_benefits_of_barefoot_training"
-              android:layout_margin="5dp"
-
-              android:layout_marginTop="5dp"
-
-                />
-          <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="1dp" android:layout_marginBottom="1dp" android:background="@color/black80"/>
-          <TextView
-                android:id="@+id/why_breakfast_is_crucial_for_us"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableTop="@drawable/why_breakfast_is_crucial_for_us"
-                android:text="@string/why_breakfast_is_crucial_for_us"
-              android:layout_margin="5dp"
-
-              android:layout_marginTop="5dp"
-
-                />
-        </LinearLayout>
-    </ScrollView>
-
-</RelativeLayout>
+        android:src="@drawable/different_colors_indicate_different_nutrients"
+        android:scaleType="fitXY"
+        />
+    <TextView
+        android:id="@+id/different_colors_indicate_different_nutrients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/different_colors_indicate_different_nutrients"
+        android:layout_margin="5dp"
+        android:layout_marginTop="10dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/black80"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/enhance_your_brain_power_with_kapalabhati_yoga"
+        />
+    <TextView
+        android:id="@+id/enhance_your_brain_power_with_kapalabhati_yoga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enhance_your_brain_power_with_kapalabhati_yoga"
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/black80"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/good_sleep_is_a_key_to_happy_life"
+        />
+    <TextView
+        android:id="@+id/good_sleep_is_a_key_to_happy_life"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/good_sleep_is_a_key_to_happy_life"
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/black80"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/what_are_the_benefits_of_barefoot_training"
+        />
+    <TextView
+        android:id="@+id/what_are_the_benefits_of_barefoot_training"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/what_are_the_benefits_of_barefoot_training"
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/black80"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/why_breakfast_is_crucial_for_us"
+        />
+    <TextView
+        android:id="@+id/why_breakfast_is_crucial_for_us"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/why_breakfast_is_crucial_for_us"
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp"
+        />
+  </LinearLayout>
+</ScrollView>

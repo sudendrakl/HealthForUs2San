@@ -75,7 +75,13 @@
   <!-- Application theme. -->
   <style name="AppTheme"
       parent="AppBaseTheme">
-    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+      <!-- Customize your theme here. -->
+      <item name="colorPrimary">@color/primary</item>
+      <item name="colorPrimaryDark">@color/primary_dark</item>
+      <item name="colorAccent">@color/accent</item>
+      <!--<item name="colorControlNormal">#f8d98e</item>-->
+      <!--<item name="colorControlActivated">#f8d98e</item>-->
+      <!--<item name="colorControlHighlight">@color/white</item>-->
   </style>
 
   <style name="AppMaterialTheme"
