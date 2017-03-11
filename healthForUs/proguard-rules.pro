@@ -30,3 +30,5 @@
 -dontwarn java.nio.file.*
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 -dontwarn okio.**
+
+-keep class bizapps.com.healthforusDoc.model.** { *; }

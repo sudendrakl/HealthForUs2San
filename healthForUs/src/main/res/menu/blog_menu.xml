@@ -7,7 +7,7 @@
       app:showAsAction="always"
       android:title="Share"
       android:icon="@mipmap/share_white"
-      android:visible="true"
+      android:visible="false"
       android:orderInCategory="1"
       />
 </menu>
