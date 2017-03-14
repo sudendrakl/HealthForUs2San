@@ -1,5 +1,6 @@
 package bizapps.com.healthforusDoc.services;
 
+import android.util.Log;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -26,7 +27,7 @@ public class FirebaseInstanceIDListenerService  extends FirebaseInstanceIdServic
     //intent.putExtra(Constants.IntentExtra.AUTH_TOKEN, auth_token); //TODO auth token got via app registration... not sure why its another api
     //startService(intent);
 
-    System.out.println("shit shit shit gcmKey=" + FirebaseInstanceId.getInstance().getToken());
+    Log.d(TAG, "gcmKey=" + FirebaseInstanceId.getInstance().getToken());
   }
 
 }

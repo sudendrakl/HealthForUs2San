@@ -227,13 +227,13 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
 
         Utility.uploadImage(URLConstants.DR_BASE_URL + "updateDoctor.php", jsonParams, files, new Callback() {
             @Override public void onFailure(Call call, IOException e) {
-                System.out.println("EPActivity.onFailure = " + e);
+                Log.e("EPActivity", ".onFailure = ", e);
                 if (pDialog != null && pDialog.isShowing()) pDialog.dismiss();
                 showMessage("Server is not responding, Please try after sometime.");
             }
 
             @Override public void onResponse(Call call, okhttp3.Response response) throws IOException {
-                System.out.println("EPActivity.onResponse = " + response);
+                Log.d("EPActivity", ".onResponse = " + response);
                 if (pDialog != null && pDialog.isShowing()) pDialog.dismiss();
                 try {
                     JSONObject jsonResponse = new JSONObject(response.body().string());
@@ -321,7 +321,6 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
             isDoctor = false;
             updateHospitalUILayout();
         }
-        System.out.println("EPActivity.setLayout() epData.getData = " + new Gson().toJson(epData.getData()));
         if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital1())) {
             img01.setImageURI(epData.getData().getPhoto_of_hospital1());
         }
