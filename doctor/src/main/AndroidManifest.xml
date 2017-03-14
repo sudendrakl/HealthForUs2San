@@ -50,6 +50,7 @@
     <activity
         android:name=".activity.PlaceActivity"
         android:label="Location"
+        android:screenOrientation="portrait"
         android:theme="@style/AppThemeNew"
         />
     <activity
@@ -108,7 +109,10 @@
         android:label="@string/title_activity_schedule_vaction"
         android:screenOrientation="portrait"
         />
-    <activity android:name=".activity.EPActivity"/>
+    <activity
+        android:name=".activity.EPActivity"
+        android:screenOrientation="portrait"
+        />
 
     <service
         android:name=".services.FirebaseInstanceIDListenerService"
@@ -134,13 +138,15 @@
     <activity
         android:name=".activity.WebActivity"
         android:label="@string/title_activity_web"
-        android:theme="@style/AppMaterialTheme"
         android:launchMode="singleTask"
-        />
-    <activity android:name=".activity.BlogListActivity"
-        android:theme="@style/AppTheme"
         android:screenOrientation="portrait"
-        android:label="@string/title_activity_blog"/>
+        android:theme="@style/AppMaterialTheme"
+        />
+    <activity
+        android:name=".activity.BlogListActivity"
+        android:label="@string/title_activity_blog"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme"/>
   </application>
 
 </manifest>

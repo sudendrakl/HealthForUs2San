@@ -21,7 +21,6 @@
             android:layout_height="60dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/grey_round_cornner"
-            android:visibility="gone"
             >
 
             <TextView
@@ -278,7 +277,7 @@
                 android:layout_height="100dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_green_textview"
-                android:drawableLeft="@drawable/hostpital_icon"
+                android:drawableLeft="@drawable/ic_address"
                 android:drawablePadding="5dp"
                 android:ems="10"
                 android:hint="Address"
@@ -293,7 +292,7 @@
                 android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_green_textview"
-                android:drawableLeft="@drawable/ic_address"
+                android:drawableLeft="@drawable/hostpital_icon"
                 android:drawablePadding="5dp"
                 android:ems="10"
                 android:hint="Address 2"
@@ -365,34 +364,34 @@
                 android:padding="5dp" />
 
             <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:gravity="center"-->
-            <!--android:padding="5dp"-->
-            <!--android:orientation="horizontal">-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!--android:orientation="horizontal">-->
 
-            <!--<TextView-->
-            <!--android:id="@+id/browse_txt_doc"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_weight="1.5"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:ems="10"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:hint="Upload Certificate"-->
-            <!--android:layout_marginRight="2.5dp"-->
-            <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/browse_txt_doc"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_weight="1.5"-->
+                    <!--android:background="@drawable/rounded_green_textview"-->
+                    <!--android:ems="10"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:hint="Upload Certificate"-->
+                    <!--android:layout_marginRight="2.5dp"-->
+                    <!--/>-->
 
-            <!--<Button-->
-            <!--android:id="@+id/browse_btn_doc"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_weight="0.5"-->
-            <!--android:layout_marginLeft="2.5dp"-->
-            <!--android:background="@drawable/dark_blue_rounded"-->
-            <!--android:text="Browse"-->
-            <!--android:textColor="@color/icons" />-->
+                <!--<Button-->
+                    <!--android:id="@+id/browse_btn_doc"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_weight="0.5"-->
+                    <!--android:layout_marginLeft="2.5dp"-->
+                    <!--android:background="@drawable/dark_blue_rounded"-->
+                    <!--android:text="Browse"-->
+                    <!--android:textColor="@color/icons" />-->
             <!--</LinearLayout>-->
 
             <EditText
@@ -633,18 +632,18 @@
                 android:gravity="center_vertical"
                 android:padding="5dp" />
             <!--<EditText-->
-            <!--android:id="@+id/hospital_cosultation_fee"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:drawableLeft="@drawable/ic_expensive"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:ems="10"-->
-            <!--visi-->
-            <!--android:hint="Consultation Fee"-->
-            <!--android:inputType="number"-->
-            <!--android:padding="5dp" />-->
+                <!--android:id="@+id/hospital_cosultation_fee"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:background="@drawable/rounded_green_textview"-->
+                <!--android:drawableLeft="@drawable/ic_expensive"-->
+                <!--android:drawablePadding="5dp"-->
+                <!--android:ems="10"-->
+                <!--visi-->
+                <!--android:hint="Consultation Fee"-->
+                <!--android:inputType="number"-->
+                <!--android:padding="5dp" />-->
 
             <EditText
                 android:id="@+id/hospital_mobile_number"
@@ -675,48 +674,48 @@
                 android:padding="5dp" />
 
             <!--<EditText-->
-            <!--android:id="@+id/hospital_fax"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:drawableLeft="@drawable/mobile_icon"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Fax"-->
-            <!--android:inputType="number"-->
-            <!--android:padding="5dp" />-->
+                <!--android:id="@+id/hospital_fax"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:background="@drawable/rounded_green_textview"-->
+                <!--android:drawableLeft="@drawable/mobile_icon"-->
+                <!--android:drawablePadding="5dp"-->
+                <!--android:ems="10"-->
+                <!--android:hint="Fax"-->
+                <!--android:inputType="number"-->
+                <!--android:padding="5dp" />-->
 
             <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:gravity="center"-->
-            <!--android:padding="5dp"-->
-            <!---->
-            <!--android:orientation="horizontal">-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="5dp"-->
+                <!---->
+                <!--android:orientation="horizontal">-->
 
-            <!--<TextView-->
-            <!--android:id="@+id/browse_txt_hos"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_weight="1.5"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:ems="10"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:hint="Upload Certificate"-->
-            <!--android:layout_marginRight="2.5dp"-->
-            <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/browse_txt_hos"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_weight="1.5"-->
+                    <!--android:background="@drawable/rounded_green_textview"-->
+                    <!--android:ems="10"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:hint="Upload Certificate"-->
+                    <!--android:layout_marginRight="2.5dp"-->
+                    <!--/>-->
 
-            <!--<Button-->
-            <!--android:id="@+id/browse_btn_hos"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_weight="0.5"-->
-            <!--android:layout_marginLeft="2.5dp"-->
-            <!--android:background="@drawable/dark_blue_rounded"-->
-            <!--android:text="Browse"-->
-            <!--android:textColor="@color/icons" />-->
+                <!--<Button-->
+                    <!--android:id="@+id/browse_btn_hos"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_weight="0.5"-->
+                    <!--android:layout_marginLeft="2.5dp"-->
+                    <!--android:background="@drawable/dark_blue_rounded"-->
+                    <!--android:text="Browse"-->
+                    <!--android:textColor="@color/icons" />-->
             <!--</LinearLayout>-->
 
             <EditText
@@ -784,29 +783,29 @@
                 android:inputType="textEmailAddress"
                 android:padding="5dp" />
             <!--<EditText-->
-            <!--android:id="@+id/hospital_certifications"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:drawableLeft="@drawable/ic_certification"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Certifications"-->
-            <!--android:inputType="textEmailAddress"-->
-            <!--android:padding="5dp" />-->
+                <!--android:id="@+id/hospital_certifications"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:background="@drawable/rounded_green_textview"-->
+                <!--android:drawableLeft="@drawable/ic_certification"-->
+                <!--android:ems="10"-->
+                <!--android:hint="Certifications"-->
+                <!--android:inputType="textEmailAddress"-->
+                <!--android:padding="5dp" />-->
 
             <!--<EditText-->
-            <!--android:id="@+id/hos_certification_no"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:drawableLeft="@drawable/ic_certificate"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Certifications Number"-->
-            <!--android:inputType="textEmailAddress"-->
-            <!--android:padding="5dp" />-->
+                <!--android:id="@+id/hos_certification_no"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:background="@drawable/rounded_green_textview"-->
+                <!--android:drawableLeft="@drawable/ic_certificate"-->
+                <!--android:drawablePadding="5dp"-->
+                <!--android:ems="10"-->
+                <!--android:hint="Certifications Number"-->
+                <!--android:inputType="textEmailAddress"-->
+                <!--android:padding="5dp" />-->
 
             <EditText
                 android:id="@+id/hospital_received_awards"
@@ -824,16 +823,16 @@
 
 
             <!--<EditText-->
-            <!--android:id="@+id/hospital_ownership"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Ownership"-->
-            <!--android:inputType="textEmailAddress"-->
-            <!--android:padding="5dp" />-->
+                <!--android:id="@+id/hospital_ownership"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:background="@drawable/rounded_green_textview"-->
+                <!--android:drawablePadding="5dp"-->
+                <!--android:ems="10"-->
+                <!--android:hint="Ownership"-->
+                <!--android:inputType="textEmailAddress"-->
+                <!--android:padding="5dp" />-->
 
             <EditText
                 android:id="@+id/hospital_accredity"
@@ -851,8 +850,7 @@
             <EditText
                 android:id="@+id/hospital_our_doctors"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
+                android:layout_height="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/rounded_green_textview"
                 android:drawableLeft="@drawable/ic_our_doctor"
@@ -1098,31 +1096,31 @@
 
         </LinearLayout>
 
-        <!--<EditText-->
-            <!--android:id="@+id/password"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:drawableLeft="@drawable/key"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Password"-->
-            <!--android:inputType="textPassword"-->
-            <!--android:padding="5dp" />-->
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_green_textview"
+            android:drawableLeft="@drawable/ic_password"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="5dp" />
 
-        <!--<EditText-->
-            <!--android:id="@+id/confirmpassword"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_marginBottom="10dp"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:drawableLeft="@drawable/key"-->
-            <!--android:drawablePadding="5dp"-->
-            <!--android:ems="10"-->
-            <!--android:hint="Confirm Password"-->
-            <!--android:inputType="textPassword"-->
-            <!--android:padding="5dp" />-->
+        <EditText
+            android:id="@+id/confirmpassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_green_textview"
+            android:drawableLeft="@drawable/ic_password"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:padding="5dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -1161,35 +1159,40 @@
             android:padding="5dp"
             android:orientation="horizontal">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:scaleType="fitXY"
                 android:id="@+id/img_01"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:src="@drawable/plus_bg"/>
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:scaleType="fitXY"
                 android:id="@+id/img_02"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:src="@drawable/plus_bg"/>
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:scaleType="fitXY"
                 android:id="@+id/img_03"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:src="@drawable/plus_bg"/>
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:scaleType="fitXY"
                 android:id="@+id/img_04"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:src="@drawable/plus_bg"/>
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:scaleType="fitXY"
                 android:id="@+id/img_05"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -1197,26 +1200,26 @@
                 android:padding="4dp"
                 android:src="@drawable/plus_bg"/>
             <!--<TextView-->
-            <!--android:id="@+id/browse_txt"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_weight="1.5"-->
-            <!--android:background="@drawable/rounded_green_textview"-->
-            <!--android:ems="10"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:hint="Select Image"-->
-            <!--android:layout_marginRight="2.5dp"-->
-            <!--/>-->
+                <!--android:id="@+id/browse_txt"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_weight="1.5"-->
+                <!--android:background="@drawable/rounded_green_textview"-->
+                <!--android:ems="10"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:hint="Select Image"-->
+                <!--android:layout_marginRight="2.5dp"-->
+                <!--/>-->
 
             <!--<Button-->
-            <!--android:id="@+id/browse_btn"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:layout_weight="0.5"-->
-            <!--android:layout_marginLeft="2.5dp"-->
-            <!--android:background="@drawable/dark_blue_rounded"-->
-            <!--android:text="Browse"-->
-            <!--android:textColor="@color/icons" />-->
+                <!--android:id="@+id/browse_btn"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:layout_marginLeft="2.5dp"-->
+                <!--android:background="@drawable/dark_blue_rounded"-->
+                <!--android:text="Browse"-->
+                <!--android:textColor="@color/icons" />-->
         </LinearLayout>
 
         <Button
@@ -1225,9 +1228,47 @@
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/rounded_button"
-            android:text="Submit"
+            android:text="@string/register"
             android:textColor="@color/icons"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="20dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            >
+            <TextView
+                android:id="@+id/t1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_centerHorizontal="true"
+                android:text="By Signing up you agree to the "/>
+            <TextView
+                android:id="@+id/t2"
+                android:layout_below="@+id/t1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#494BD2"
+                android:text="@string/terms"
+                android:textSize="20sp"
+                android:layout_centerHorizontal="true"
+                />
+            <TextView
+                android:id="@+id/t3"
+                android:layout_below="@+id/t2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#494BD2"
+                android:textSize="20sp"
+                android:text="@string/privacy"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

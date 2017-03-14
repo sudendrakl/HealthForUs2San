@@ -2,6 +2,7 @@ package bizapps.com.healthforusDoc;
 
 import bizapps.com.healthforusDoc.helper.OneSignalNotificationOpenedHandler;
 import bizapps.com.healthforusDoc.helper.OneSignalNotificationReceivedHandler;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.onesignal.OneSignal;
 import java.io.File;
 import java.util.HashMap;
@@ -49,6 +50,7 @@ public class BZAppApplication extends Application {
         .setNotificationOpenedHandler(new OneSignalNotificationOpenedHandler())
         .setNotificationReceivedHandler(new OneSignalNotificationReceivedHandler())
         .init();
+    Fresco.initialize(this);
   }
 
   public static synchronized BZAppApplication getInstance() {

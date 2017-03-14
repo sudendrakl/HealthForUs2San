@@ -12,8 +12,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -35,9 +35,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import okhttp3.Call;
@@ -102,7 +102,7 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
     private File[] arrayFile = new File[5];
     File mFile;
     //HashMap<String,File> hashFiles = new HashMap<String,File>();
-    ImageView img01,img02,img03,img04,img05;
+    SimpleDraweeView img01,img02,img03,img04,img05;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,11 +121,11 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
         browseBtnDoc = (Button) findViewById(R.id.browse_btn_doc);
         browseBtnDoc.setOnClickListener(this);
 
-        img01 = (ImageView) findViewById(R.id.img_01);
-        img02 = (ImageView) findViewById(R.id.img_02);
-        img03 = (ImageView) findViewById(R.id.img_03);
-        img04 = (ImageView) findViewById(R.id.img_04);
-        img05 = (ImageView) findViewById(R.id.img_05);
+        img01 = (SimpleDraweeView) findViewById(R.id.img_01);
+        img02 = (SimpleDraweeView) findViewById(R.id.img_02);
+        img03 = (SimpleDraweeView) findViewById(R.id.img_03);
+        img04 = (SimpleDraweeView) findViewById(R.id.img_04);
+        img05 = (SimpleDraweeView) findViewById(R.id.img_05);
         img01.setOnClickListener(this);
         img02.setOnClickListener(this);
         img03.setOnClickListener(this);
@@ -308,34 +308,34 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
         BZAppApplication.getInstance().addToRequestQueue(postRequest, tag_json_obj);
     }
 
-    public void setLayout(){
+    public void setLayout() {
         mydata = epData.getData();
-        if(epData.getData().getType().equalsIgnoreCase("doctor")){
+        if (epData.getData().getType().equalsIgnoreCase("doctor")) {
             doctor_layout.setVisibility(View.VISIBLE);
             hospital_layout.setVisibility(View.GONE);
             isDoctor = true;
             updateDoctorUILayout();
-        }
-        else{
+        } else {
             doctor_layout.setVisibility(View.GONE);
             hospital_layout.setVisibility(View.VISIBLE);
             isDoctor = false;
             updateHospitalUILayout();
         }
-        if(epData.getData().getPhoto_of_hospital1()!=null && !epData.getData().getPhoto_of_hospital1().equalsIgnoreCase("")){
-            Picasso.with(this).load(epData.getData().getPhoto_of_hospital1()).into(img01);
+        System.out.println("EPActivity.setLayout() epData.getData = " + new Gson().toJson(epData.getData()));
+        if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital1())) {
+            img01.setImageURI(epData.getData().getPhoto_of_hospital1());
         }
-        if(epData.getData().getPhoto_of_hospital2()!=null && !epData.getData().getPhoto_of_hospital2().equalsIgnoreCase("")){
-            Picasso.with(this).load(epData.getData().getPhoto_of_hospital2()).into(img02);
+        if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital2())) {
+            img02.setImageURI(epData.getData().getPhoto_of_hospital2());
         }
-        if(epData.getData().getPhoto_of_hospital3()!=null && !epData.getData().getPhoto_of_hospital3().equalsIgnoreCase("")){
-            Picasso.with(this).load(epData.getData().getPhoto_of_hospital3()).into(img03);
+        if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital3())) {
+            img03.setImageURI(epData.getData().getPhoto_of_hospital3());
         }
-        if(epData.getData().getPhoto_of_hospital4()!=null && !epData.getData().getPhoto_of_hospital4().equalsIgnoreCase("")){
-            Picasso.with(this).load(epData.getData().getPhoto_of_hospital4()).into(img04);
+        if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital4())) {
+            img04.setImageURI(epData.getData().getPhoto_of_hospital4());
         }
-        if(epData.getData().getPhoto_of_hospital5()!=null && !epData.getData().getPhoto_of_hospital5().equalsIgnoreCase("")){
-            Picasso.with(this).load(epData.getData().getPhoto_of_hospital5()).into(img05);
+        if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital5())) {
+            img05.setImageURI(epData.getData().getPhoto_of_hospital5());
         }
     }
 
@@ -800,23 +800,23 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
                         //browse_txt.setText(file.getAbsolutePath().toString());
                         mFiles.add(file);
                         if(BZAppApplication.selectedImage==1){
-                            Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img01));
+                            img01.setImageURI(data.getData());
                             BZAppApplication.fileHashMap.put("1",file);
                         }
                         else if(BZAppApplication.selectedImage==2){
-                            Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img02));
+                            img02.setImageURI(data.getData());
                             BZAppApplication.fileHashMap.put("2",file);
                         }
                         else if(BZAppApplication.selectedImage==3){
-                            Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img03));
+                            img03.setImageURI(data.getData());
                             BZAppApplication.fileHashMap.put("3",file);
                         }
                         else if(BZAppApplication.selectedImage==4){
-                            Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img04));
+                            img04.setImageURI(data.getData());
                             BZAppApplication.fileHashMap.put("4",file);
                         }
                         else if(BZAppApplication.selectedImage==5){
-                            Picasso.with(EPActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img05));
+                            img05.setImageURI(data.getData());
                             BZAppApplication.fileHashMap.put("5",file);
                         }
                     }

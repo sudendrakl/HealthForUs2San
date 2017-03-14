@@ -1,5 +1,6 @@
 package bizapps.com.healthforusDoc.activity;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -26,10 +27,8 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.squareup.picasso.Picasso;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -96,7 +95,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 	RadioGroup radioGroup;
 	public static final int CALLED_ACTIVITY = 1;
 	List<File> mFiles;
-	ImageView img01,img02,img03,img04,img05;
+	SimpleDraweeView img01,img02,img03,img04,img05;
 	File mFile;
 	private String[] specs = { "Cardiology", "Cardiovascular surgery", "Clinical laboratory sciences", "Dermatology",
 			"Allergy and immunology", "pathology" };
@@ -126,11 +125,11 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		browse_txt_doc = (TextView) findViewById(R.id.browse_txt_doc);
 		browseBtnDoc = (Button) findViewById(R.id.browse_btn_doc);
 		browseBtnDoc.setOnClickListener(this);
-		img01 = (ImageView) findViewById(R.id.img_01);
-		img02 = (ImageView) findViewById(R.id.img_02);
-		img03 = (ImageView) findViewById(R.id.img_03);
-		img04 = (ImageView) findViewById(R.id.img_04);
-		img05 = (ImageView) findViewById(R.id.img_05);
+		img01 = (SimpleDraweeView) findViewById(R.id.img_01);
+		img02 = (SimpleDraweeView) findViewById(R.id.img_02);
+		img03 = (SimpleDraweeView) findViewById(R.id.img_03);
+		img04 = (SimpleDraweeView) findViewById(R.id.img_04);
+		img05 = (SimpleDraweeView) findViewById(R.id.img_05);
 		img01.setOnClickListener(this);
 		img02.setOnClickListener(this);
 		img03.setOnClickListener(this);
@@ -679,19 +678,19 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 						mFiles.add(file);
 
 						if(BZAppApplication.selectedImage==1){
-							Picasso.with(RegisterActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img01));
+							img01.setImageURI(data.getData());
 						}
 						else if(BZAppApplication.selectedImage==2){
-							Picasso.with(RegisterActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img02));
+							img02.setImageURI(data.getData());
 						}
 						else if(BZAppApplication.selectedImage==3){
-							Picasso.with(RegisterActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img03));
+							img03.setImageURI(data.getData());
 						}
 						else if(BZAppApplication.selectedImage==4){
-							Picasso.with(RegisterActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img04));
+							img04.setImageURI(data.getData());
 						}
 						else if(BZAppApplication.selectedImage==5){
-							Picasso.with(RegisterActivity.this).load(data.getData()).noPlaceholder().centerCrop().fit().into((img05));
+							img05.setImageURI(data.getData());
 						}
 					}
 					else{
