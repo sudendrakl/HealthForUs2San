@@ -6,6 +6,13 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import bizapps.com.healthforusDoc.utills.PrefManager;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.drawable.ProgressBarDrawable;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.common.ResizeOptions;
+import com.facebook.imagepipeline.request.ImageRequest;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
 public class BaseActivity extends AppCompatActivity{
 	
@@ -28,4 +35,21 @@ public class BaseActivity extends AppCompatActivity{
 		    }
 		  }
 		}
+
+	protected void setImage(SimpleDraweeView imageView, String uri) {
+		setImage(imageView, Uri.parse(uri));
+	}
+
+	protected void setImage(SimpleDraweeView imageView, Uri uri) {
+		int width = imageView.getMeasuredWidth(), height = imageView.getMeasuredWidth();
+		ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri)
+				.setResizeOptions(new ResizeOptions(width, height))
+				.build();
+		DraweeController controller = Fresco.newDraweeControllerBuilder()
+				.setOldController(imageView.getController())
+				.setImageRequest(request)
+				.build();
+		imageView.getHierarchy().setProgressBarImage(new ProgressBarDrawable());
+		imageView.setController(controller);
+	}
 }

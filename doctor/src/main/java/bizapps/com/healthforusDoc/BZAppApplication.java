@@ -3,6 +3,7 @@ package bizapps.com.healthforusDoc;
 import bizapps.com.healthforusDoc.helper.OneSignalNotificationOpenedHandler;
 import bizapps.com.healthforusDoc.helper.OneSignalNotificationReceivedHandler;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.onesignal.OneSignal;
 import java.io.File;
 import java.util.HashMap;
@@ -50,7 +51,11 @@ public class BZAppApplication extends Application {
         .setNotificationOpenedHandler(new OneSignalNotificationOpenedHandler())
         .setNotificationReceivedHandler(new OneSignalNotificationReceivedHandler())
         .init();
-    Fresco.initialize(this);
+    ImagePipelineConfig config = ImagePipelineConfig.newBuilder(getApplicationContext())
+        .setDownsampleEnabled(true)
+        .setResizeAndRotateEnabledForNetwork(true)
+        .build();
+    Fresco.initialize(this, config);
   }
 
   public static synchronized BZAppApplication getInstance() {

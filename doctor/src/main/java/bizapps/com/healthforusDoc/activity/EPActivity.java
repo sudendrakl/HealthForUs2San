@@ -322,19 +322,19 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
             updateHospitalUILayout();
         }
         if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital1())) {
-            img01.setImageURI(epData.getData().getPhoto_of_hospital1());
+            setImage(img01,epData.getData().getPhoto_of_hospital1());
         }
         if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital2())) {
-            img02.setImageURI(epData.getData().getPhoto_of_hospital2());
+            setImage(img02,epData.getData().getPhoto_of_hospital2());
         }
         if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital3())) {
-            img03.setImageURI(epData.getData().getPhoto_of_hospital3());
+            setImage(img03,epData.getData().getPhoto_of_hospital3());
         }
         if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital4())) {
-            img04.setImageURI(epData.getData().getPhoto_of_hospital4());
+            setImage(img04,epData.getData().getPhoto_of_hospital4());
         }
         if (!TextUtils.isEmpty(epData.getData().getPhoto_of_hospital5())) {
-            img05.setImageURI(epData.getData().getPhoto_of_hospital5());
+            setImage(img05,epData.getData().getPhoto_of_hospital5());
         }
     }
 
@@ -799,23 +799,23 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
                         //browse_txt.setText(file.getAbsolutePath().toString());
                         mFiles.add(file);
                         if(BZAppApplication.selectedImage==1){
-                            img01.setImageURI(data.getData());
+                            setImage(img01,data.getData());
                             BZAppApplication.fileHashMap.put("1",file);
                         }
                         else if(BZAppApplication.selectedImage==2){
-                            img02.setImageURI(data.getData());
+                            setImage(img02,data.getData());
                             BZAppApplication.fileHashMap.put("2",file);
                         }
                         else if(BZAppApplication.selectedImage==3){
-                            img03.setImageURI(data.getData());
+                            setImage(img03,data.getData());
                             BZAppApplication.fileHashMap.put("3",file);
                         }
                         else if(BZAppApplication.selectedImage==4){
-                            img04.setImageURI(data.getData());
+                            setImage(img04,data.getData());
                             BZAppApplication.fileHashMap.put("4",file);
                         }
                         else if(BZAppApplication.selectedImage==5){
-                            img05.setImageURI(data.getData());
+                            setImage(img05,data.getData());
                             BZAppApplication.fileHashMap.put("5",file);
                         }
                     }

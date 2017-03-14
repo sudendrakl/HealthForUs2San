@@ -674,23 +674,19 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 					File file = new File(getRealPathFromURI(getApplicationContext(), imageUri));
 
 					if(!BZAppApplication.certificate) {
-//						browse_txt.setText(file.getAbsolutePath().toString());
+						//						browse_txt.setText(file.getAbsolutePath().toString());
 						mFiles.add(file);
 
-						if(BZAppApplication.selectedImage==1){
-							img01.setImageURI(data.getData());
-						}
-						else if(BZAppApplication.selectedImage==2){
-							img02.setImageURI(data.getData());
-						}
-						else if(BZAppApplication.selectedImage==3){
-							img03.setImageURI(data.getData());
-						}
-						else if(BZAppApplication.selectedImage==4){
-							img04.setImageURI(data.getData());
-						}
-						else if(BZAppApplication.selectedImage==5){
-							img05.setImageURI(data.getData());
+						if (BZAppApplication.selectedImage == 1) {
+							setImage(img01, data.getData());
+						} else if (BZAppApplication.selectedImage == 2) {
+							setImage(img02, data.getData());
+						} else if (BZAppApplication.selectedImage == 3) {
+							setImage(img03, data.getData());
+						} else if (BZAppApplication.selectedImage == 4) {
+							setImage(img04, data.getData());
+						} else if (BZAppApplication.selectedImage == 5) {
+							setImage(img05, data.getData());
 						}
 					}
 					else{

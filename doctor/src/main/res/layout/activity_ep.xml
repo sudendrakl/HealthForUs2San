@@ -1253,7 +1253,6 @@
           android:layout_height="50dp"
           android:layout_weight="1"
           android:padding="4dp"
-          android:scaleType="fitXY"
           android:src="@drawable/plus_bg"
           />
       <com.facebook.drawee.view.SimpleDraweeView
@@ -1262,7 +1261,6 @@
           android:layout_height="50dp"
           android:layout_weight="1"
           android:padding="4dp"
-          android:scaleType="fitXY"
           android:src="@drawable/plus_bg"
           />
       <com.facebook.drawee.view.SimpleDraweeView
@@ -1271,7 +1269,6 @@
           android:layout_height="50dp"
           android:layout_weight="1"
           android:padding="4dp"
-          android:scaleType="fitXY"
           android:src="@drawable/plus_bg"
           />
       <com.facebook.drawee.view.SimpleDraweeView
@@ -1280,7 +1277,6 @@
           android:layout_height="50dp"
           android:layout_weight="1"
           android:padding="4dp"
-          android:scaleType="fitXY"
           android:src="@drawable/plus_bg"
           />
       <com.facebook.drawee.view.SimpleDraweeView
@@ -1289,7 +1285,6 @@
           android:layout_height="50dp"
           android:layout_weight="1"
           android:padding="4dp"
-          android:scaleType="fitXY"
           android:src="@drawable/plus_bg"
           />
       <!--<TextView-->
