@@ -28,21 +28,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import bizapps.com.healthforusDoc.utills.Utility;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import okhttp3.Call;
+import okhttp3.Callback;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -185,25 +184,17 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
 
     private void browseGallery() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (ContextCompat.checkSelfPermission(EPActivity.this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-                if (ActivityCompat.shouldShowRequestPermissionRationale(EPActivity.this,
-                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
-
-                } else {
-                    ActivityCompat.requestPermissions(EPActivity.this,
-                            new String[] { Manifest.permission.READ_EXTERNAL_STORAGE },
-                            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+            if (ContextCompat.checkSelfPermission(EPActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                if (!ActivityCompat.shouldShowRequestPermissionRationale(EPActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                    ActivityCompat.requestPermissions(EPActivity.this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE },
+                        MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
                 }
             } else {
-                ActivityCompat.requestPermissions(EPActivity.this,
-                        new String[] { Manifest.permission.READ_EXTERNAL_STORAGE },
-                        MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, SELECT_PHOTO);
             }
         } else {
-
             Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
             photoPickerIntent.setType("image/*");
             startActivityForResult(photoPickerIntent, SELECT_PHOTO);
@@ -216,71 +207,58 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
         pDialog.setMessage("Please wait...");
         pDialog.show();
 		/* Post data */
-        if(mFiles.size()!=0){
+        if (mFiles.size() != 0) {
             mFiles.toArray(arrayFile);
         }
-        Map<String, String> jsonParams = new HashMap<String, String>();
-        jsonParams.put("userid",getAppSharedPreference().getUserGuid());
-        if (isDoctor)
-            setDoctorMap(jsonParams);
-        else
-            setHospitalMap(jsonParams);
+        HashMap<String, String> jsonParams = new HashMap<String, String>();
+        jsonParams.put("userid", getAppSharedPreference().getUserGuid());
+        if (isDoctor) setDoctorMap(jsonParams);
+        else setHospitalMap(jsonParams);
 
-        CustomMultipartRequest multipartRequest = new CustomMultipartRequest(
-//                "http://doctorapp.rakyow.com/userapp/api/doctor_edit",
-            URLConstants.DR_BASE_URL + "updateDoctor.php",
-                jsonParams,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String result) {
-                        try {
-                            JSONObject response = new JSONObject(result);
-                            Log.e("EP Response",""+response);
-                            if (response != null) {
-                                if (response.getString("status").equalsIgnoreCase("fail")) {
-                                    Toast.makeText(getApplicationContext(), response.getString("message"),
-                                            Toast.LENGTH_SHORT).show();
-//                                    if (response.getString("message").contains("Please Varify your Email ID")) {
-//                                        addtoPrefs();
-//                                    }
-                                } else {
-                                    Toast.makeText(getApplicationContext(), response.getString("message"),
-                                            Toast.LENGTH_SHORT).show();
-                                    addtoPrefs();
-                                }
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+        HashMap<String, File> files = new HashMap<>(6);
+        for (int i = 0; i < arrayFile.length; i++) {
+            if (arrayFile[i] != null) {
+                files.put("photo_of_hospital" + i, arrayFile[i]);
+            }
+        }
+        if (mFile != null) {
+            files.put("certificate_file", mFile);
+        }
 
-                        pDialog.dismiss();
+        Utility.uploadImage(URLConstants.DR_BASE_URL + "updateDoctor.php", jsonParams, files, new Callback() {
+            @Override public void onFailure(Call call, IOException e) {
+                System.out.println("EPActivity.onFailure = " + e);
+                if (pDialog != null && pDialog.isShowing()) pDialog.dismiss();
+                showMessage("Server is not responding, Please try after sometime.");
+            }
 
+            @Override public void onResponse(Call call, okhttp3.Response response) throws IOException {
+                System.out.println("EPActivity.onResponse = " + response);
+                if (pDialog != null && pDialog.isShowing()) pDialog.dismiss();
+                try {
+                    JSONObject jsonResponse = new JSONObject(response.body().string());
+                    Log.d("EP Response", "" + jsonResponse);
+                    if (jsonResponse.getString("status").equalsIgnoreCase("fail")) {
+                        //                                    if (response.getString("message").contains("Please Varify your Email ID")) {
+                        //                                        addtoPrefs();
+                        //                                    }
+                    } else {
+                        addtoPrefs();
                     }
-                }, arrayFile,mFile, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (error instanceof NetworkError) {
-                } else if (error instanceof ServerError) {
-                } else if (error instanceof AuthFailureError) {
-                } else if (error instanceof ParseError) {
-                } else if (error instanceof NoConnectionError) {
-                } else if (error instanceof TimeoutError) {
+                    showMessage(jsonResponse.getString("message"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                if (pDialog != null)
-                    pDialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Server is not responding, Please try after sometime.",
-                        Toast.LENGTH_SHORT).show();
             }
         });
-        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(
-                100000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Volley.newRequestQueue(this).add(mr);
+    }
 
-
-        BZAppApplication.getInstance().addToRequestQueue(multipartRequest, tag_json_obj);
+    private void showMessage(final String message) {
+        EPActivity.this.runOnUiThread(new Runnable() {
+            @Override public void run() {
+                Toast.makeText(BZAppApplication.getInstance(), message, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void doServiceRequest() {

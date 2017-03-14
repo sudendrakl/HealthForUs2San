@@ -10,9 +10,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import bizapps.com.healthforusDoc.BZAppApplication;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.HashMap;
+import okhttp3.MultipartBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * Created by venkatat on 4/25/2016.
@@ -93,5 +98,25 @@ public class Utility {
         }
     }
 
+    public static void uploadImage(String url, HashMap<String, String> formData, HashMap<String, File> files, okhttp3.Callback callback) {
+        MultipartBody.Builder requestBodyBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        if(formData!=null && formData.size()>0) {
+            for (String key : formData.keySet()) {
+                requestBodyBuilder.addFormDataPart(key, formData.get(key));
+            }
+        }
+        if(files!=null && files.size()>0) {
+            for (String key : files.keySet()) {
+                requestBodyBuilder.addFormDataPart(key, files.get(key).getName(),
+                    RequestBody.create(MultipartBody.FORM, files.get(key)));
+            }
+        }
+        RequestBody requestBody = requestBodyBuilder.build();
+        Request request = new Request.Builder()
+            .url(url)
+            .post(requestBody)
+            .build();
+        BZAppApplication.getInstance().getOkHttpClient().newCall(request).enqueue(callback);
+    }
 
 }

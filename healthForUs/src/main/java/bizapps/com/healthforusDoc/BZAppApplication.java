@@ -19,6 +19,8 @@ import android.util.Log;
 import bizapps.com.healthforusDoc.model.Appiontments;
 import bizapps.com.healthforusDoc.utills.ConnectivityReceiver;
 import bizapps.com.healthforusDoc.utills.LruBitmapCache;
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
 
 public class BZAppApplication extends Application {
 
@@ -36,6 +38,7 @@ public class BZAppApplication extends Application {
   public static String mLocation;
   public static boolean certificate = false;
   public static HashMap<String, File> fileHashMap;
+  private final OkHttpClient client = new OkHttpClient.Builder().connectTimeout(30, TimeUnit.SECONDS).build();
 
   @Override public void onCreate() {
     super.onCreate();
@@ -88,5 +91,9 @@ public class BZAppApplication extends Application {
     if (mRequestQueue != null) {
       mRequestQueue.cancelAll(tag);
     }
+  }
+
+  public OkHttpClient getOkHttpClient() {
+    return client;
   }
 }

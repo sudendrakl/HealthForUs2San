@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
+import bizapps.com.healthforusDoc.BZAppApplication;
 import bizapps.com.healthforusDoc.BuildConfig;
 import bizapps.com.healthforusDoc.R;
 import bizapps.com.healthforusDoc.data.GcmUpdateResponseDto;
@@ -33,7 +34,6 @@ public class RegistrationService extends IntentService {
   public static final MediaType MEDIA_TYPE_MARKDOWN =
       MediaType.parse("text/x-markdown; charset=utf-8");
 
-  private final OkHttpClient client = new OkHttpClient();
   private final Gson gson = new Gson();
 
   public RegistrationService() {
@@ -118,7 +118,7 @@ public class RegistrationService extends IntentService {
     requestBuilder.post(RequestBody.create(MEDIA_TYPE_MARKDOWN, postParams));
     Request request = requestBuilder.build();
 
-    Response response = client.newCall(request).execute();
+    Response response = BZAppApplication.getInstance().getOkHttpClient().newCall(request).execute();
     Log.d(TAG,"response body :::  " + response.body().string());
     if (!response.isSuccessful()) {
       throw new IOException("Unexpected code " + response);
