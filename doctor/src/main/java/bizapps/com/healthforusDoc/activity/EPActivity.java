@@ -62,7 +62,6 @@ import bizapps.com.healthforusDoc.R;
 import bizapps.com.healthforusDoc.model.IDDetail;
 import bizapps.com.healthforusDoc.model.SearchModel;
 import bizapps.com.healthforusDoc.utills.ConnectivityReceiver;
-import bizapps.com.healthforusDoc.utills.CustomMultipartRequest;
 import bizapps.com.healthforusDoc.utills.PrefManager;
 import bizapps.com.healthforusDoc.utills.URLConstants;
 
@@ -218,7 +217,7 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
         HashMap<String, File> files = new HashMap<>(6);
         for (int i = 0; i < arrayFile.length; i++) {
             if (arrayFile[i] != null) {
-                files.put("photo_of_hospital" + i, arrayFile[i]);
+                files.put("photo_of_hospital" + (i+1), arrayFile[i]);
             }
         }
         if (mFile != null) {
@@ -249,14 +248,6 @@ public class EPActivity extends BaseActivity implements View.OnClickListener{
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            }
-        });
-    }
-
-    private void showMessage(final String message) {
-        EPActivity.this.runOnUiThread(new Runnable() {
-            @Override public void run() {
-                Toast.makeText(BZAppApplication.getInstance(), message, Toast.LENGTH_SHORT).show();
             }
         });
     }

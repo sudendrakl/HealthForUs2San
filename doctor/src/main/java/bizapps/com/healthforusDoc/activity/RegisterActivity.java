@@ -1,8 +1,10 @@
 package bizapps.com.healthforusDoc.activity;
 
+import bizapps.com.healthforusDoc.utills.Utility;
 import com.facebook.drawee.view.SimpleDraweeView;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +14,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,7 +69,6 @@ import bizapps.com.healthforusDoc.BZAppApplication;
 import bizapps.com.healthforusDoc.R;
 import bizapps.com.healthforusDoc.model.IDDetail;
 import bizapps.com.healthforusDoc.utills.ConnectivityReceiver;
-import bizapps.com.healthforusDoc.utills.CustomMultipartRequest;
 import bizapps.com.healthforusDoc.utills.PrefManager;
 import bizapps.com.healthforusDoc.utills.URLConstants;
 
@@ -509,63 +512,49 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		if(mFiles.size()!=0){
 			mFiles.toArray(arrayFile);
 		}
-		Map<String, String> jsonParams = new HashMap<String, String>();
+		final HashMap<String, String> jsonParams = new HashMap<String, String>();
 		if (isDoctor)
 			setDoctorMap(jsonParams);
 		else
 			setHospitalMap(jsonParams);
 
-		CustomMultipartRequest multipartRequest = new CustomMultipartRequest(
-				(isRegister) ? URLConstants.DR_BASE_URL + "doctor.php" : URLConstants.getDoctorUpdateProfileUrl, jsonParams,
-				new Response.Listener<String>() {
-					@Override
-					public void onResponse(String result) {
-						try {
-							Log.e("Register Response",""+result);
-							JSONObject response = new JSONObject(result);
-							if (response != null) {
-								if (response.getString("status").equalsIgnoreCase("fail")) {
-									JSONObject data = response.getJSONObject("data");
-									Toast.makeText(getApplicationContext(), data.getString("message"),
-											Toast.LENGTH_SHORT).show();
-									if (data.getString("message").contains("Registration successful, kindly verify using OTP sent")) {
-										addtoPrefs();
-									}
-								} else
-									addtoPrefs();
-							}
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
+		HashMap<String, File> files = new HashMap<>(6);
+		for (int i = 0; i < arrayFile.length; i++) {
+			if (arrayFile[i] != null) {
+				files.put("photo_of_hospital" + (i+1), arrayFile[i]);
+			}
+		}
+		if (mFile != null) {
+			files.put("certificate_file", mFile);
+		}
 
-						pDialog.dismiss();
+		Utility.uploadImage(URLConstants.DR_BASE_URL + "updateDoctor.php", jsonParams, files, new Callback() {
+			@Override public void onFailure(Call call, IOException e) {
+				Log.e("EPActivity", ".onFailure = ", e);
+				if (pDialog != null && pDialog.isShowing()) pDialog.dismiss();
+				showMessage("Server is not responding, Please try after sometime.");
+			}
 
-					}
-				}, arrayFile,mFile, new Response.ErrorListener() {
+			@Override public void onResponse(Call call, okhttp3.Response response) throws IOException {
+				Log.d("EPActivity", ".onResponse = " + response);
+				if (pDialog != null && pDialog.isShowing()) pDialog.dismiss();
+				try {
+					JSONObject jsonResponse = new JSONObject(response.body().string());
+					Log.d("Register Response",""+jsonResponse);
+					if (jsonResponse.getString("status").equalsIgnoreCase("fail")) {
+            JSONObject data = jsonResponse.getJSONObject("data");
+						showMessage(jsonResponse.getString("message"));
+						if (data.getString("message").contains("Registration successful, kindly verify using OTP sent")) {
+              addtoPrefs();
+            }
+          } else
+            addtoPrefs();
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						if (error instanceof NetworkError) {
-						} else if (error instanceof ServerError) {
-						} else if (error instanceof AuthFailureError) {
-						} else if (error instanceof ParseError) {
-						} else if (error instanceof NoConnectionError) {
-						} else if (error instanceof TimeoutError) {
-						}
-						if (pDialog != null)
-							pDialog.dismiss();
-						Toast.makeText(getApplicationContext(), "Server is not responding, Please try after sometime.",
-								Toast.LENGTH_SHORT).show();
-					}
-				});
-		multipartRequest.setRetryPolicy(new DefaultRetryPolicy(
-				100000,
-				DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-				DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-		//Volley.newRequestQueue(this).add(mr);
-
-
-		BZAppApplication.getInstance().addToRequestQueue(multipartRequest, tag_json_obj);
 	}
 
 	@Override
