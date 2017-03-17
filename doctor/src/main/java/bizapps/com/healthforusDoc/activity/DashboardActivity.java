@@ -1,15 +1,20 @@
 package bizapps.com.healthforusDoc.activity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.PopupMenu.OnMenuItemClickListener;
@@ -44,6 +49,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,7 +64,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DashboardActivity extends BaseActivity implements OnClickListener, OnMenuItemClickListener{
-	
+
+	private static final int CAMERA_PERMISSION_REQUEST = 0x8897;
 	private ImageLoader imageLoader;
 	private ProgressDialog pDialog;
 	private String tag_json_obj = "json_obj_req";
@@ -615,29 +622,68 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
     }
 
     private void cameraIntent() {
-        // call android default camera
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        intent.putExtra(MediaStore.EXTRA_OUTPUT,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString());
-        // ******** code for crop image
-        intent.putExtra("crop", "true");
-        intent.putExtra("aspectX", 0);
-        intent.putExtra("aspectY", 0);
-        intent.putExtra("outputX", 200);
-        intent.putExtra("outputY", 150);
+			if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
-        try {
+				// Should we show an explanation?
+				if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
 
-            intent.putExtra("return-data", true);
-            startActivityForResult(intent, PICK_FROM_CAMERA);
+					// Show an explanation to the user *asynchronously* -- don't block
+					// this thread waiting for the user's response! After the user
+					// sees the explanation, try again to request the permission.
 
-        } catch (ActivityNotFoundException e) {
-        // Do nothing for now
-        }
+				} else {
+					// No explanation needed, we can request the permission.
+					ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, CAMERA_PERMISSION_REQUEST);
 
+					// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+					// app-defined int constant. The callback method gets the
+					// result of the request.
+				}
+			} else {
 
-    }
+				// call android default camera
+				Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				imageFile = getOutputMediaFile();
+				intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imageFile));
+				// ******** code for crop image
+				intent.putExtra("crop", "true");
+				intent.putExtra("aspectX", 0);
+				intent.putExtra("aspectY", 0);
+				intent.putExtra("outputX", 200);
+				intent.putExtra("outputY", 150);
+
+				try {
+
+					intent.putExtra("return-data", true);
+					startActivityForResult(intent, PICK_FROM_CAMERA);
+				} catch (Exception e) {
+					// Do nothing for now
+				}
+			}
+		}
+
+		File imageFile;
+
+	private static File getOutputMediaFile(){
+		File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "CameraDemo");
+
+		if (!mediaStorageDir.exists()){
+			if (!mediaStorageDir.mkdirs()){
+				return null;
+			}
+		}
+
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		return new File(mediaStorageDir.getPath() + File.separator + "IMG_"+ timeStamp + ".jpg");
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+		if (requestCode == CAMERA_PERMISSION_REQUEST && grantResults[0] == PackageManager.PERMISSION_GRANTED && Manifest.permission.CAMERA.equals(permissions[0])) {
+			cameraIntent();
+		}
+	}
 
     private void galleryIntent() {
         Intent intent = new Intent(Intent.ACTION_PICK,
@@ -665,14 +711,10 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == PICK_FROM_CAMERA) {
-           // Bundle extras = data.getExtras();
-            if (data!=null && data.getExtras() != null) {
-                Bitmap photo = data.getExtras().getParcelable("data");
-                mProfileImageView.setImageBitmap(photo);
-                getAppSharedPreference().setLoggedInUserImage(getRealPathFromURI(getApplicationContext(), data.getData()));
-            }
-        }
+        if (requestCode == PICK_FROM_CAMERA && resultCode == RESULT_OK) {
+					mProfileImageView.setImageURI(Uri.fromFile(imageFile));
+					getAppSharedPreference().setLoggedInUserImage(imageFile.getAbsolutePath());
+				}
 
         if (requestCode == PICK_FROM_GALLERY) {
             if (data!=null && data.getExtras() != null) {
