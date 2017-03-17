@@ -288,10 +288,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 								else {
 									Log.i("APPOINTMENTS", response.toString());
 									JSONArray jArray = response.getJSONArray("data");
-									GsonBuilder gsonBuilder = new GsonBuilder();
-									Gson gson = gsonBuilder.create();
-									List<IDDetail> posts = new ArrayList<IDDetail>();
-									posts = Arrays.asList(gson.fromJson(jArray.toString(), IDDetail[].class));
+									Gson gson = new Gson();
+									List<IDDetail> posts = Arrays.asList(gson.fromJson(jArray.toString(), IDDetail[].class));
 									specailiation = new ArrayList<String>();
 //									specailiation.add("Select Speciality");
 									for (IDDetail detail : posts) {
@@ -527,8 +525,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		if (mFile != null) {
 			files.put("certificate_file", mFile);
 		}
-
-		Utility.uploadImage(URLConstants.DR_BASE_URL + "updateDoctor.php", jsonParams, files, new Callback() {
+		String url = (isRegister) ? URLConstants.DR_BASE_URL + "doctor.php" : URLConstants.getDoctorUpdateProfileUrl;
+		Utility.uploadImage(url, jsonParams, files, new Callback() {
 			@Override public void onFailure(Call call, IOException e) {
 				Log.e("EPActivity", ".onFailure = ", e);
 				if (pDialog != null && pDialog.isShowing()) pDialog.dismiss();

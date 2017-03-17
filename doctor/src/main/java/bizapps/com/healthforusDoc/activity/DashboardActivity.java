@@ -436,10 +436,8 @@ public class DashboardActivity extends BaseActivity implements OnClickListener, 
 									Log.e("Dashboard Response",""+response.toString());
 									Log.i("APPOINTMENTS", response.toString());
 									JSONArray jArray = response.getJSONArray("data");
-									GsonBuilder gsonBuilder = new GsonBuilder();
-									Gson gson = gsonBuilder.create();
-									List<Appiontments> posts = new ArrayList<Appiontments>();
-									posts = Arrays.asList(gson.fromJson(jArray.toString(), Appiontments[].class));
+									Gson gson = new Gson();
+									List<Appiontments> posts= Arrays.asList(gson.fromJson(jArray.toString(), Appiontments[].class));
 									BZAppApplication.pendingAppointmentsList = new ArrayList<Appiontments>();
 									BZAppApplication.canceledAppointmentsList = new ArrayList<Appiontments>();
 									BZAppApplication.acceptedAppointmentsList = new ArrayList<Appiontments>();
