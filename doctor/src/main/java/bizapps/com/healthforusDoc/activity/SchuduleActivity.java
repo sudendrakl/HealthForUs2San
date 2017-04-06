@@ -384,33 +384,36 @@ public class SchuduleActivity extends BaseActivity
 			pDialog.setMessage("Please wait...");
 			pDialog.show();
 			/* Post data */
-			Map<String, String> jsonParams = new HashMap<String, String>();
+			JSONObject jsonParams = new JSONObject();
 			String startTime = "", endTime = "";
 			/*for(String str : timeList){
 				String[] timings = str.split("-");
 				startTime += timings[0]+",";
 				endTime += timings[1]+",";
  			}*/
-			jsonParams.put("userid", getAppSharedPreference().getUserGuid().toString());
-			jsonParams.put("monday_start", removeLastChar(mon_start.toString()));
-			jsonParams.put("Tuesday_start", removeLastChar(tue_start.toString()));
-			jsonParams.put("Wednesday_start", removeLastChar(wed_start.toString()));
-			jsonParams.put("thrusday_start", removeLastChar(thu_start.toString()));
-			jsonParams.put("Friday_start", removeLastChar(fri_start.toString()));
-			jsonParams.put("saterday_start", removeLastChar(sat_start.toString()));
-			jsonParams.put("Sunday_start", removeLastChar(sun_start.toString()));
-			jsonParams.put("saterday_end", removeLastChar(sat_end.toString()));
-			jsonParams.put("monday_end", removeLastChar(mon_end.toString()));
-			jsonParams.put("Tuesday_end",removeLastChar(tue_end.toString()));
-			jsonParams.put("Wednesday_end", removeLastChar(wed_end.toString()));
-			jsonParams.put("thrusday_end", removeLastChar(thu_end.toString()));
-			jsonParams.put("Friday_end", removeLastChar(fri_end.toString()));
-			jsonParams.put("Sunday_end", removeLastChar(sun_end.toString()));
+			try {
+				jsonParams.put("userid", getAppSharedPreference().getUserGuid().toString());
+				jsonParams.put("monday_start", removeLastChar(mon_start.toString()));
+				jsonParams.put("Tuesday_start", removeLastChar(tue_start.toString()));
+				jsonParams.put("Wednesday_start", removeLastChar(wed_start.toString()));
+				jsonParams.put("thrusday_start", removeLastChar(thu_start.toString()));
+				jsonParams.put("Friday_start", removeLastChar(fri_start.toString()));
+				jsonParams.put("saterday_start", removeLastChar(sat_start.toString()));
+				jsonParams.put("Sunday_start", removeLastChar(sun_start.toString()));
+				jsonParams.put("saterday_end", removeLastChar(sat_end.toString()));
+				jsonParams.put("monday_end", removeLastChar(mon_end.toString()));
+				jsonParams.put("Tuesday_end",removeLastChar(tue_end.toString()));
+				jsonParams.put("Wednesday_end", removeLastChar(wed_end.toString()));
+				jsonParams.put("thrusday_end", removeLastChar(thu_end.toString()));
+				jsonParams.put("Friday_end", removeLastChar(fri_end.toString()));
+				jsonParams.put("Sunday_end", removeLastChar(sun_end.toString()));
+			} catch (JSONException jEx) {
+				Log.e("schedule", "failed to register schedule");
+			}
 
 			JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST,
-//					URLConstants.getDoctorScheduleAppointmentUrl,
-					URLConstants.DR_BASE_URL + "appointment_timings.php",
-					new JSONObject(jsonParams), new Response.Listener<JSONObject>() {
+					URLConstants.getDoctorScheduleAppointmentUrl,
+					jsonParams, new Response.Listener<JSONObject>() {
 						@Override
 						public void onResponse(JSONObject response) {
 							try{
